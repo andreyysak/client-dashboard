@@ -1,0 +1,93 @@
+@use "variables" as *;
+
+body {
+  font-family: $font-family-primary;
+  color: $color-dark-100;
+}
+
+h1, .h1 {
+  font-size: $font-size-h1;
+  font-weight: $font-weight-h1;
+  letter-spacing: $letter-spacing-h1;
+  margin-top: 0;
+}
+
+h2, .h2 {
+  font-size: $font-size-h2;
+  font-weight: $font-weight-h2;
+  letter-spacing: $letter-spacing-h2;
+  margin-top: 0;
+}
+
+h3, .h3 {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-h3;
+  letter-spacing: $letter-spacing-h3;
+  margin-top: 0;
+}
+
+h4, .h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-h4;
+  letter-spacing: $letter-spacing-h4;
+  margin-top: 0;
+}
+
+h5, .h5 {
+  font-size: $font-size-h5;
+  font-weight: $font-weight-h5;
+  letter-spacing: $letter-spacing-h5;
+  margin-top: 0;
+}
+
+h6, .h6 {
+  font-size: $font-size-h6;
+  font-weight: $font-weight-h6;
+  letter-spacing: $letter-spacing-h6;
+  margin-top: 0;
+}
+
+.subtitle-1 {
+  font-size: $font-size-subtitle-1;
+  font-weight: $font-weight-subtitle-1;
+  letter-spacing: $letter-spacing-subtitle-1;
+}
+
+.subtitle-2 {
+  font-size: $font-size-subtitle-2;
+  font-weight: $font-weight-subtitle-2;
+  letter-spacing: $letter-spacing-subtitle-2;
+}
+
+p, .body-1 {
+  font-size: $font-size-body-1;
+  font-weight: $font-weight-body-1;
+  letter-spacing: $letter-spacing-body-1;
+  margin-top: 0;
+}
+
+.body-2 {
+  font-size: $font-size-body-2;
+  font-weight: $font-weight-body-2;
+  letter-spacing: $letter-spacing-body-2;
+}
+
+.button-text {
+  font-size: $font-size-button;
+  font-weight: $font-weight-button;
+  letter-spacing: $letter-spacing-button;
+  text-transform: $text-transform-button;
+}
+
+.caption {
+  font-size: $font-size-caption;
+  font-weight: $font-weight-caption;
+  letter-spacing: $letter-spacing-caption;
+}
+
+.overline {
+  font-size: $font-size-overline;
+  font-weight: $font-weight-overline;
+  letter-spacing: $letter-spacing-overline;
+  text-transform: $text-transform-overline;
+}

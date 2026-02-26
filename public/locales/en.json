@@ -1,0 +1,14 @@
+{
+  "home": {
+    "title": "Welcome"
+  },
+  "login": {
+    "title": "Login page"
+  },
+  "register": {
+    "title": "Register page"
+  },
+  "profile": {
+    "title": "Profile page"
+  }
+}

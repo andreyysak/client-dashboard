@@ -1,0 +1,11 @@
+@use "common/reset";
+@use "common/fonts";
+@use "common/variables";
+@use "common/typography";
+@use "common/mixins";
+
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
+
+@use "widgets/loader/index";

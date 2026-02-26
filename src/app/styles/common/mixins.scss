@@ -1,0 +1,74 @@
+@use "variables" as *;
+
+@mixin mq($min-width) {
+  @media (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $padding-mobile;
+  padding-left: $padding-mobile;
+
+  @media (min-width: $breakpoint-tablet-min) {
+    padding-right: $padding-tablet;
+    padding-left: $padding-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop-sm-min) {
+    padding-right: $padding-desktop;
+    padding-left: $padding-desktop;
+  }
+
+  @media (min-width: $breakpoint-desktop-lg-min) {
+    max-width: 1440px;
+  }
+}
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin grid($columns: 1, $gap: $padding-mobile) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-auto-fit($min-width, $gap: $padding-mobile) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

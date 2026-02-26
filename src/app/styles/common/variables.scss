@@ -1,0 +1,127 @@
+/* ------------------ Light Color Palette ------------------ */
+$color-light-100: #ffffff;
+$color-light-200: #f6f6f6;
+$color-light-300: #ececec;
+$color-light-400: #e1e1e1;
+$color-light-500: #d0d0d0;
+
+/* ------------------ Dark Color Palette ------------------ */
+$color-dark-100: #4d4d4d;
+$color-dark-200: #3c3c3c;
+$color-dark-300: #1e1e1e;
+$color-dark-400: #111111;
+$color-dark-500: #000000;
+
+/* ------------------ Light System Indicators ------------------ */
+$color-sys-light-red-60: #da1e28;
+$color-sys-light-green-50: #24a148;
+$color-sys-light-orange-40: #ff832b;
+$color-sys-light-orange-60-outline: #ba4e00;
+$color-sys-light-yellow-30: #f1c21b;
+$color-sys-light-yellow-60-outline: #8e6a00;
+$color-sys-light-blue-70: #0043ce;
+$color-sys-light-purple-60: #8a3ffc;
+$color-sys-light-gray-60: #6f6f6f;
+
+/* ------------------ Dark System Indicators ------------------ */
+$color-sys-dark-red-50: #fa4d56;
+$color-sys-dark-green-40: #42be65;
+$color-sys-dark-orange-40: #ff832b;
+$color-sys-dark-blue-50: #4589ff;
+$color-sys-dark-yellow-30: #f1c21b;
+$color-sys-dark-purple-50: #a56eff;
+$color-sys-dark-gray-50: #8d8d8d;
+
+/* ------------------ Typography: Base ------------------ */
+$font-family-primary: "Roboto", sans-serif;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+
+$text-transform-uppercase: uppercase;
+
+/* ------------------ Typography: Headings ------------------ */
+$font-size-h1: 96px;
+$font-weight-h1: $font-weight-light;
+$letter-spacing-h1: -1.5px;
+
+$font-size-h2: 60px;
+$font-weight-h2: $font-weight-light;
+$letter-spacing-h2: -0.5px;
+
+$font-size-h3: 48px;
+$font-weight-h3: $font-weight-regular;
+$letter-spacing-h3: normal;
+
+$font-size-h4: 34px;
+$font-weight-h4: $font-weight-regular;
+$letter-spacing-h4: 0.25px;
+
+$font-size-h5: 24px;
+$font-weight-h5: $font-weight-regular;
+$letter-spacing-h5: normal;
+
+$font-size-h6: 20px;
+$font-weight-h6: $font-weight-medium;
+$letter-spacing-h6: 0.15px;
+
+/* ------------------ Typography: Subtitles ------------------ */
+$font-size-subtitle-1: 16px;
+$font-weight-subtitle-1: $font-weight-regular;
+$letter-spacing-subtitle-1: 0.15px;
+
+$font-size-subtitle-2: 14px;
+$font-weight-subtitle-2: $font-weight-medium;
+$letter-spacing-subtitle-2: 0.1px;
+
+/* ------------------ Typography: Body ------------------ */
+$font-size-body-1: 16px;
+$font-weight-body-1: $font-weight-regular;
+$letter-spacing-body-1: 0.5px;
+
+$font-size-body-2: 14px;
+$font-weight-body-2: $font-weight-regular;
+$letter-spacing-body-2: 0.25px;
+
+/* ------------------ Typography: Components ------------------ */
+$font-size-button: 14px;
+$font-weight-button: $font-weight-medium;
+$letter-spacing-button: 1.25px;
+$text-transform-button: $text-transform-uppercase;
+
+$font-size-caption: 12px;
+$font-weight-caption: $font-weight-regular;
+$letter-spacing-caption: 0.4px;
+
+$font-size-overline: 10px;
+$font-weight-overline: $font-weight-regular;
+$letter-spacing-overline: 1.5px;
+$text-transform-overline: $text-transform-uppercase;
+
+/* ------------------ Media Queries (Breakpoints) ------------------ */
+$breakpoint-mobile-min: 320px;
+$breakpoint-mobile-max: 480px;
+
+$breakpoint-tablet-min: 481px;
+$breakpoint-tablet-max: 768px;
+
+$breakpoint-desktop-sm-min: 769px;
+$breakpoint-desktop-sm-max: 1024px;
+
+$breakpoint-desktop-lg-min: 1025px;
+
+/* ------------------ Margin/Padding ------------------ */
+$padding-mobile: 16px;
+$padding-tablet: 24px;
+$padding-desktop: 32px;
+
+$margin-mobile: 16px;
+$margin-tablet: 24px;
+$margin-desktop: 32px;
+
+/* ------------------ Components Sizes ------------------ */
+$sidebar-width-tablet: 240px;
+$sidebar-width-desktop: 280px;
+$header-height: 64px;
+$footer-height: 164px;

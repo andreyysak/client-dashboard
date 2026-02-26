@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+$font-inter: "Inter", sans-serif;
+$font-roboto: "Roboto", sans-serif;
+$font-roboto-mono: "Roboto Mono", monospace;
+$font-lato: "Lato", sans-serif;
+$font-open-sans: "Open Sans", sans-serif;
+$font-montserrat: "Montserrat", sans-serif;
+$font-noto-sans: "Noto Sans", sans-serif;
+$font-nunito: "Nunito", sans-serif;
+$font-raleway: "Raleway", sans-serif;
+
+/* ------------------ INTER (100-900) ------------------ */
+@for $i from 1 through 9 {
+  $w: $i * 100;
+  .inter-#{$w} { font-family: $font-inter; font-weight: #{$w}; font-style: normal; }
+  .inter-#{$w}-italic { font-family: $font-inter; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ ROBOTO (100-900) ------------------ */
+@for $i from 1 through 9 {
+  $w: $i * 100;
+  .roboto-#{$w} { font-family: $font-roboto; font-weight: #{$w}; font-style: normal; }
+  .roboto-#{$w}-italic { font-family: $font-roboto; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ ROBOTO MONO (100-700) ------------------ */
+@for $i from 1 through 7 {
+  $w: $i * 100;
+  .roboto-mono-#{$w} { font-family: $font-roboto-mono; font-weight: #{$w}; font-style: normal; }
+  .roboto-mono-#{$w}-italic { font-family: $font-roboto-mono; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ LATO (100, 300, 400, 700, 900) ------------------ */
+@each $w in 100, 300, 400, 700, 900 {
+  .lato-#{$w} { font-family: $font-lato; font-weight: #{$w}; font-style: normal; }
+  .lato-#{$w}-italic { font-family: $font-lato; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ OPEN SANS (300, 400, 600, 700, 800) ------------------ */
+@each $w in 300, 400, 600, 700, 800 {
+  .open-sans-#{$w} { font-family: $font-open-sans; font-weight: #{$w}; font-style: normal; }
+  .open-sans-#{$w}-italic { font-family: $font-open-sans; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ MONTSERRAT (100-900) ------------------ */
+@for $i from 1 through 9 {
+  $w: $i * 100;
+  .montserrat-#{$w} { font-family: $font-montserrat; font-weight: #{$w}; font-style: normal; }
+  .montserrat-#{$w}-italic { font-family: $font-montserrat; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ NOTO SANS (100-900) ------------------ */
+@for $i from 1 through 9 {
+  $w: $i * 100;
+  .noto-sans-#{$w} { font-family: $font-noto-sans; font-weight: #{$w}; font-style: normal; }
+  .noto-sans-#{$w}-italic { font-family: $font-noto-sans; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ NUNITO (200-1000) ------------------ */
+@for $i from 2 through 10 {
+  $w: $i * 100;
+  .nunito-#{$w} { font-family: $font-nunito; font-weight: #{$w}; font-style: normal; }
+  .nunito-#{$w}-italic { font-family: $font-nunito; font-weight: #{$w}; font-style: italic; }
+}
+
+/* ------------------ RALEWAY (100-900) ------------------ */
+@for $i from 1 through 9 {
+  $w: $i * 100;
+  .raleway-#{$w} { font-family: $font-raleway; font-weight: #{$w}; font-style: normal; }
+  .raleway-#{$w}-italic { font-family: $font-raleway; font-weight: #{$w}; font-style: italic; }
+}
