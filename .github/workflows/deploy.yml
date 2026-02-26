@@ -38,5 +38,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts
           
-          ssh -i ~/.ssh/id_rsa "$SERVER_USER@$SERVER_HOST" "mkdir -p /var/www/client-dashboard && rm -rf /var/www/client-dashboard/*"
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa" dist/ "$SERVER_USER@$SERVER_HOST:/var/www/client-dashboard/"
+          # Очищення та копіювання
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" "mkdir -p /var/www/client-dashboard && rm -rf /var/www/client-dashboard/*"
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" dist/ "$SERVER_USER@$SERVER_HOST:/var/www/client-dashboard/"
