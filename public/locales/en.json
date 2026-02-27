@@ -13,5 +13,22 @@
   },
   "profile": {
     "title": "Profile page"
+  },
+  "header": {
+    "title": "Dashboard"
+  },
+  "navigation": {
+    "garage": "Garage",
+    "trips": "Trips",
+    "fuel": "Fuel",
+    "maintenance": "Maintenance",
+    "bank": "Bank",
+    "categories": "Categories",
+    "transactions": "Transactions",
+    "cards": "Cards",
+    "cinema": "Cinema",
+    "movies": "Movies",
+    "tv_shows": "TV Shows",
+    "gym": "Gym"
   }
 }

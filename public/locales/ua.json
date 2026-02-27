@@ -13,5 +13,22 @@
   },
   "profile": {
     "title": "Профіль"
+  },
+  "header": {
+    "title": "Дашборд"
+  },
+  "navigation": {
+    "garage": "Гараж",
+    "trips": "Поїздки",
+    "fuel": "Пальне",
+    "maintenance": "Обслуговування",
+    "bank": "Банк",
+    "categories": "Категорії",
+    "transactions": "Транзакції",
+    "cards": "Картки",
+    "cinema": "Кіно",
+    "movies": "Фільми",
+    "tv_shows": "Серіали",
+    "gym": "Зал"
   }
 }

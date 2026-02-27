@@ -1,0 +1,95 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+
+.header {
+  height: $header-height;
+  @include flex-between;
+  background-color: $color-light-300;
+  border-radius: $border-radius-xl;
+  padding: $padding-desktop;
+  margin-block: $margin-desktop;
+
+  &__left {
+    &--link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+      &:hover {
+        .header__left--logo {
+          transform: rotate(180deg);
+        }
+
+        .header__left--title {
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
+    &--logo {
+      width: 48px;
+      height: 48px;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    &--title {
+      font-weight: $font-weight-medium;
+      transition: $transition-base;
+    }
+  }
+
+  &__center {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      &--item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        transition: $transition-base;
+        border-radius: $border-radius-sm;
+
+        &:hover {
+          background-color: $color-light-400;
+          font-weight: $font-weight-medium;
+        }
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    &__controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background-color: $color-light-400;
+      padding: 8px 12px;
+      border-radius: $border-radius-sm;
+
+      &--item {
+        padding: 4px;
+        transition: $transition-base;
+        border-radius: $border-radius-sm;
+
+        &:hover {
+          background-color: $color-light-500;
+        }
+      }
+    }
+
+    &__profile {
+      padding: 6px;
+      border: 2px solid $color-light-500;
+      border-radius: $border-radius-sm;
+    }
+  }
+}
