@@ -1,96 +1,17 @@
 import { useTranslation } from 'react-i18next'
 import logo from '@/assets/images/logo.png'
-import {
-  ArrowLeftRight,
-  Banknote,
-  Bolt,
-  CarFront,
-  CreditCard,
-  Dumbbell,
-  Fuel,
-  Gavel,
-  Globe,
-  Grid2X2,
-  MapPin,
-  Moon,
-  Popcorn,
-  TvMinimalPlay,
-  User,
-  Videotape,
-} from 'lucide-react'
 import { Link } from 'react-router'
-
-const navLinks = [
-  {
-    labelKey: 'navigation.garage',
-    path: '/garage',
-    icon: <CarFront />,
-    subLinks: [
-      {
-        labelKey: 'navigation.trips',
-        path: '/trips',
-        icon: <MapPin />,
-      },
-      {
-        labelKey: 'navigation.fuel',
-        path: '/fuel',
-        icon: <Fuel />,
-      },
-      {
-        labelKey: 'navigation.maintenance',
-        path: '/maintenance',
-        icon: <Gavel />,
-      },
-    ],
-  },
-  {
-    labelKey: 'navigation.bank',
-    path: '/bank',
-    icon: <Banknote />,
-    subLinks: [
-      {
-        labelKey: 'navigation.categories',
-        path: '/categories',
-        icon: <Grid2X2 />,
-      },
-      {
-        labelKey: 'navigation.transactions',
-        path: '/transactions',
-        icon: <ArrowLeftRight />,
-      },
-      {
-        labelKey: 'navigation.cards',
-        path: '/cards',
-        icon: <CreditCard />,
-      },
-    ],
-  },
-  {
-    labelKey: 'navigation.cinema',
-    path: '/cinema',
-    icon: <Popcorn />,
-    subLinks: [
-      {
-        labelKey: 'navigation.movies',
-        path: '/movies',
-        icon: <Videotape />,
-      },
-      {
-        labelKey: 'navigation.tv_shows',
-        path: '/tv-shows',
-        icon: <TvMinimalPlay />,
-      },
-    ],
-  },
-  {
-    labelKey: 'navigation.gym',
-    path: '/gym',
-    icon: <Dumbbell />,
-  },
-]
+import BurgerMenu from '@/widgets/BurgerMenu'
+import { navLinks } from '@/shared/consts/NavLinks.tsx'
+import { Bolt, Globe, Menu, Moon, User, X } from 'lucide-react'
 
 export const Header = () => {
   const { t } = useTranslation()
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleOpenBurgerMenu = () => {
+    setIsOpen(cur => !cur)
+  }
 
   return (
     <header className="header">
@@ -133,6 +54,14 @@ export const Header = () => {
           </Link>
         </div>
       </div>
+
+      <div className="header__burger-btn">
+        <button onClick={toggleOpenBurgerMenu}>
+          {isOpen ? <X /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {isOpen && <BurgerMenu />}
     </header>
   )
 }

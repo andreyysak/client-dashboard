@@ -8,13 +8,15 @@
   border-radius: $border-radius-xl;
   padding: $padding-desktop;
   margin-block: $margin-desktop;
+  position: relative;
 
   &__left {
     &--link {
       display: flex;
       align-items: center;
       gap: 10px;
-      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      color: inherit;
 
       &:hover {
         .header__left--logo {
@@ -36,7 +38,8 @@
 
     &--title {
       font-weight: $font-weight-medium;
-      transition: $transition-base;
+      transition: font-weight 0.3s ease;
+      font-size: $font-size-h6;
     }
   }
 
@@ -44,19 +47,30 @@
     &__list {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 30px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
       &--item {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 8px 16px;
+        gap: 8px;
+        padding: 8px 12px;
         transition: $transition-base;
         border-radius: $border-radius-sm;
+        text-decoration: none;
+        color: inherit;
+        font-size: $font-size-body-2;
 
         &:hover {
           background-color: $color-light-400;
           font-weight: $font-weight-medium;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
         }
       }
     }
@@ -64,24 +78,36 @@
 
   &__right {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
 
     &__controls {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 10px;
       background-color: $color-light-400;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: $border-radius-sm;
 
       &--item {
         padding: 4px;
         transition: $transition-base;
         border-radius: $border-radius-sm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: inherit;
 
         &:hover {
           background-color: $color-light-500;
+        }
+
+        a {
+          display: flex;
+          color: inherit;
         }
       }
     }
@@ -90,6 +116,83 @@
       padding: 6px;
       border: 2px solid $color-light-500;
       border-radius: $border-radius-sm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition-base;
+
+      &:hover {
+        background-color: $color-light-400;
+      }
+
+      a {
+        display: flex;
+        color: inherit;
+      }
+    }
+  }
+
+  &__burger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: $border-radius-sm;
+    transition: $transition-base;
+    color: inherit;
+
+    &:hover {
+      background-color: $color-light-400;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .header {
+    &__center {
+      &__list {
+        gap: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .header {
+    padding: $padding-tablet;
+    margin-block: $margin-tablet;
+
+    &__center {
+      display: none;
+    }
+
+    &__burger-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .header {
+    padding: $padding-mobile;
+    margin-block: $margin-mobile;
+
+    &__left {
+      &--logo {
+        height: 32px;
+        width: 32px;
+      }
+
+      &--title {
+        font-size: $font-size-subtitle-1;
+      }
+    }
+
+    &__right {
+      display: none;
     }
   }
 }

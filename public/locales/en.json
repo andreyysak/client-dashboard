@@ -15,7 +15,8 @@
     "title": "Profile page"
   },
   "header": {
-    "title": "Dashboard"
+    "title": "Dashboard",
+    "profile": "Profile"
   },
   "navigation": {
     "garage": "Garage",

@@ -15,7 +15,8 @@
     "title": "Профіль"
   },
   "header": {
-    "title": "Дашборд"
+    "title": "Дашборд",
+    "profile": "Профіль"
   },
   "navigation": {
     "garage": "Гараж",
