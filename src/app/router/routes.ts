@@ -8,6 +8,7 @@ import HomePage from '@/pages/HomePage'
 import ProfilePage from '@/pages/ProfilePage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import Loader from '@/widgets/Loader'
+import LoginSuccessPage from '@/pages/LoginSuccessPage'
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ export const router = createBrowserRouter([
         path: AppRoutes.LOGIN,
         loader: Loader,
         Component: LoginPage,
+      },
+      {
+        path: AppRoutes.LOGIN_SUCCESS,
+        loader: Loader,
+        Component: LoginSuccessPage,
       },
     ],
   },

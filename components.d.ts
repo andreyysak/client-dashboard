@@ -13,6 +13,7 @@ declare global{
 	const ProtectedRoute: typeof import('./src/app/router/ProtectedRoute')['ProtectedRoute']
 	const HomePage: typeof import('./src/pages/HomePage/HomePage')['HomePage']
 	const LoginPage: typeof import('./src/pages/LoginPage/LoginPage')['LoginPage']
+	const LoginSuccessPage: typeof import('./src/pages/LoginSuccessPage/LoginSuccessPage')['LoginSuccessPage']
 	const NotFoundPage: typeof import('./src/pages/NotFoundPage/NotFoundPage')['NotFoundPage']
 	const ProfilePage: typeof import('./src/pages/ProfilePage/ProfilePage')['ProfilePage']
 	const Footer: typeof import('./src/widgets/Footer/Footer')['Footer']

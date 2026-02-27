@@ -1,8 +1,13 @@
 import { useTranslation } from 'react-i18next'
 import googleLogo from '@/assets/images/google.png'
+import { getGoogleAuthRedirectUrl } from '@/features/auth/api/login.ts'
 
 export const LoginPage = () => {
   const { t } = useTranslation()
+
+  const handleGoogleLogin = () => {
+    window.location.href = getGoogleAuthRedirectUrl()
+  }
 
   return (
     <div className="login">
@@ -13,7 +18,7 @@ export const LoginPage = () => {
 
         <h4 className="login__title">{t('login.title')}</h4>
 
-        <button className="login__button">
+        <button className="login__button" onClick={handleGoogleLogin}>
           {t('login.button')}
         </button>
 
