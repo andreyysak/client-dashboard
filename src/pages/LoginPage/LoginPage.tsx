@@ -1,11 +1,24 @@
 import { useTranslation } from 'react-i18next'
+import googleLogo from '@/assets/images/google.png'
 
 export const LoginPage = () => {
-  const { t } = useTranslation('login')
+  const { t } = useTranslation()
 
   return (
-    <div>
-      <h2>{t('title')}</h2>
+    <div className="login">
+      <div className="login__card">
+        <div className="login__image">
+          <img src={googleLogo} alt={t('login.image_alt')} />
+        </div>
+
+        <h4 className="login__title">{t('login.title')}</h4>
+
+        <button className="login__button">
+          {t('login.button')}
+        </button>
+
+        <p className="login__confidentiality">{t('login.confidentiality')}</p>
+      </div>
     </div>
   )
 }

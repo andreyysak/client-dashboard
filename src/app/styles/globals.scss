@@ -1,6 +1,7 @@
 @use "common/reset";
 @use "common/fonts";
 @use "common/variables";
+@use "common/themes";
 @use "common/typography";
 @use "common/mixins";
 
@@ -8,4 +9,8 @@
 @use 'swiper/css/navigation';
 @use 'swiper/css/pagination';
 
-@use "widgets/loader/index";
+@use "app";
+
+@use "pages/login/index" as login;
+
+@use "widgets/loader/index" as loader;

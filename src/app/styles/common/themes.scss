@@ -1,0 +1,55 @@
+@use "variables" as *;
+
+:root {
+  --bg-page: #{$color-light-200};
+  --bg-card: #{$color-light-100};
+
+  --text-main: #{$color-dark-500};
+  --text-secondary: #{$color-dark-100};
+  --text-muted: #{$color-sys-light-gray-60};
+
+  --border-color: #{$color-light-300};
+  --border-focus: #{$color-sys-light-blue-70};
+
+  --btn-bg: #{$color-light-200};
+  --btn-text: #{$color-dark-500};
+  --btn-hover: #{$color-light-400};
+  --btn-active: #{$color-light-400};
+
+  --color-success: #{$color-sys-light-green-50};
+  --color-error: #{$color-sys-light-red-60};
+  --color-warning: #{$color-sys-light-yellow-30};
+  --color-info: #{$color-sys-light-blue-70};
+  --color-accent: #{$color-sys-light-purple-60};
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.05);
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --bg-page: #{$color-dark-400};
+  --bg-card: #{$color-dark-300};
+
+  --text-main: #{$color-light-100};
+  --text-secondary: #{$color-sys-dark-gray-50};
+  --text-muted: #{$color-dark-100};
+
+  --border-color: #{$color-dark-200};
+  --border-focus: #{$color-sys-dark-blue-50};
+
+  --btn-bg: #{$color-dark-200};
+  --btn-text: #{$color-light-100};
+  --btn-hover: #{$color-dark-100};
+  --btn-active: #{$color-dark-200};
+
+  --color-success: #{$color-sys-dark-green-40};
+  --color-error: #{$color-sys-dark-red-50};
+  --color-warning: #{$color-sys-dark-yellow-30};
+  --color-info: #{$color-sys-dark-blue-50};
+  --color-accent: #{$color-sys-dark-purple-50};
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
+}

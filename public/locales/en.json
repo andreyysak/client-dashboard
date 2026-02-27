@@ -3,7 +3,10 @@
     "title": "Welcome"
   },
   "login": {
-    "title": "Login page"
+    "title": "Login page",
+    "image_alt": "Google picture",
+    "button": "Sign in with Google",
+    "confidentiality": "All data is secure and confidential."
   },
   "register": {
     "title": "Register page"

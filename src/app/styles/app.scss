@@ -1,0 +1,7 @@
+@use "common/variables" as *;
+@use "common/mixins" as *;
+
+body {
+  background-color: var(--bg-page);
+  @include container;
+}
