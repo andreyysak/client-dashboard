@@ -2,6 +2,8 @@ import { GarageApi, useGarageStore } from '@/entities/garage'
 import { useEffect } from 'react'
 import Loader from '@/widgets/Loader'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router'
+import { AppRoutes } from '@/shared/consts/AppRoutes.ts'
 
 export const GaragePage = () => {
   const {setCars, isLoading, setLoading, cars} = useGarageStore()
@@ -31,7 +33,7 @@ export const GaragePage = () => {
       <h4>{t('garage.title')}</h4>
       <div className="garage__cars">
         {cars.map((car) => (
-          <div className="garage__cars__item" key={car.car_id}>
+          <Link to={`${AppRoutes.GARAGE.ROOT}/${car.car_id}`} className="garage__cars__item" key={car.car_id}>
             <div className="garage__cars__item--header">
               <div className="brand-info">
                 <h6>
@@ -77,7 +79,7 @@ export const GaragePage = () => {
             <div className="garage__cars__item--footer">
               <span className="vin">{car.vin_code}</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

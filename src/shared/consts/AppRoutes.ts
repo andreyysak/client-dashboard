@@ -8,6 +8,7 @@ export const AppRoutes = {
 
   GARAGE: {
     ROOT: '/garage',
+    CAR: ':id',
     TRIPS: 'trips',
     FUEL: 'fuel',
     MAINTENANCE: 'maintenance',

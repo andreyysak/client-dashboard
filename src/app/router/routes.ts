@@ -22,6 +22,8 @@ import MoviePage from '@/pages/MoviePage'
 import TvShowPage from '@/pages/TvShowPage'
 import GymPage from '@/pages/GymPage'
 import NotFoundPage from '@/pages/NotFoundPage'
+import CarPage from '@/pages/CarPage'
+import Loader from '@/widgets/Loader'
 
 export const router = createBrowserRouter([
   {
@@ -29,10 +31,12 @@ export const router = createBrowserRouter([
     children: [
       {
         path: AppRoutes.LOGIN,
+        loader: Loader,
         Component: LoginPage,
       },
       {
         path: AppRoutes.LOGIN_SUCCESS,
+        loader: Loader,
         Component: LoginSuccessPage,
       },
     ],
@@ -45,14 +49,17 @@ export const router = createBrowserRouter([
         children: [
           {
             path: AppRoutes.HOME,
+            loader: Loader,
             Component: HomePage,
           },
           {
             path: AppRoutes.PROFILE,
+            loader: Loader,
             Component: ProfilePage,
           },
           {
             path: AppRoutes.SETTINGS,
+            loader: Loader,
             Component: SettingsPage,
           },
           {
@@ -60,18 +67,27 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                loader: Loader,
                 Component: GaragePage,
               },
               {
+                path: AppRoutes.GARAGE.CAR,
+                loader: Loader,
+                Component: CarPage,
+              },
+              {
                 path: AppRoutes.GARAGE.TRIPS,
+                loader: Loader,
                 Component: TripsPage,
               },
               {
                 path: AppRoutes.GARAGE.FUEL,
+                loader: Loader,
                 Component: FuelPage,
               },
               {
                 path: AppRoutes.GARAGE.MAINTENANCE,
+                loader: Loader,
                 Component: MaintenancePage,
               },
             ],
@@ -81,18 +97,22 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                loader: Loader,
                 Component: BankPage,
               },
               {
                 path: AppRoutes.BANK.CATEGORIES,
+                loader: Loader,
                 Component: CategoriesPage,
               },
               {
                 path: AppRoutes.BANK.TRANSACTIONS,
+                loader: Loader,
                 Component: TransactionPage,
               },
               {
                 path: AppRoutes.BANK.CREDIT_CARDS,
+                loader: Loader,
                 Component: CreditCardsPage,
               },
             ],
@@ -102,20 +122,24 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
+                loader: Loader,
                 Component: CinemaPage,
               },
               {
                 path: AppRoutes.CINEMA.MOVIES,
+                loader: Loader,
                 Component: MoviePage,
               },
               {
                 path: AppRoutes.CINEMA.TV_SHOWS,
+                loader: Loader,
                 Component: TvShowPage,
               },
             ],
           },
           {
             path: AppRoutes.GYM,
+            loader: Loader,
             Component: GymPage,
           },
         ],
@@ -124,6 +148,7 @@ export const router = createBrowserRouter([
   },
   {
     path: AppRoutes.NOT_FOUND,
+    loader: Loader,
     Component: NotFoundPage,
   },
 ])
