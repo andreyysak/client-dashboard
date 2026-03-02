@@ -1,0 +1,70 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+
+.breadcrumbs {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: $transition-base;
+
+    &:hover {
+      color: var(--color-info);
+
+      svg {
+        color: var(--color-info);
+      }
+    }
+
+    svg {
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+  }
+
+  &__separator {
+    color: var(--border-color);
+    flex-shrink: 0;
+  }
+
+  &__current {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    background: var(--bg-card);
+    padding: 2px 8px;
+    border-radius: $border-radius-sm;
+    border: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .breadcrumbs {
+    &__link, &__current {
+      font-size: 12px;
+    }
+  }
+}

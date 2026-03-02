@@ -3,6 +3,7 @@ import { useGarageStore } from '@/entities/garage'
 import { useTranslation } from 'react-i18next'
 import { Gauge, Fuel, Settings2, Palette, Calendar, Hash } from 'lucide-react'
 import Loader from '@/widgets/Loader'
+import Breadcrumbs from '@/widgets/Breadcrumbs'
 
 export const CarPage = () => {
   const { id } = useParams<{ id: string }>()
@@ -24,6 +25,7 @@ export const CarPage = () => {
   return (
     <div className="car-page">
       <header className="car-page__header">
+        <Breadcrumbs />
         <div className="car-page__title-group">
           <h1>
             {car.brand} {car.model}
