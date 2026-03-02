@@ -34,10 +34,14 @@ jobs:
           SERVER_USER: ${{ secrets.SERVER_USER }}
         run: |
           mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          
           echo "$SSH_PRIVATE_KEY_BASE64" | base64 -d > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          
           ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts
           
-          # Очищення та копіювання
-          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" "mkdir -p /var/www/client-dashboard && rm -rf /var/www/client-dashboard/*"
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no" dist/ "$SERVER_USER@$SERVER_HOST:/var/www/client-dashboard/"
+          # Створюємо папку на сервері, якщо її немає, перед копіюванням
+          ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no "$SERVER_USER@$SERVER_HOST" "mkdir -p /var/www/client-dashboard"
+          
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o BatchMode=yes" dist/ "$SERVER_USER@$SERVER_HOST:/var/www/client-dashboard/"
