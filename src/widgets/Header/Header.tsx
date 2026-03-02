@@ -1,16 +1,17 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import logo from '@/assets/images/logo.png'
 import { Link } from 'react-router'
-import BurgerMenu from '@/widgets/BurgerMenu'
 import { navLinks } from '@/shared/consts/NavLinks.tsx'
-import { Bolt, Globe, Menu, Moon, User, X } from 'lucide-react'
+import { Bolt, Globe, Menu, Moon, User, X, ChevronDown } from 'lucide-react'
+import BurgerMenu from '@/widgets/BurgerMenu'
 
 export const Header = () => {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleOpenBurgerMenu = () => {
-    setIsOpen(cur => !cur)
+    setIsOpen((cur) => !cur)
   }
 
   return (
@@ -25,9 +26,27 @@ export const Header = () => {
       <nav className="header__center">
         <ul className="header__center__list">
           {navLinks.map((link) => (
-            <li key={link.path} className="header__center__list--item">
-              {link.icon}
-              <Link to={link.path}>{t(link.labelKey)}</Link>
+            <li key={link.path} className="header__center__item">
+              <div className="header__center__link-wrapper">
+                {link.icon}
+                <Link to={link.path}>{t(link.labelKey)}</Link>
+                {link.subLinks && (
+                  <ChevronDown size={14} className="header__center__arrow" />
+                )}
+              </div>
+
+              {link.subLinks && (
+                <ul className="header__dropdown">
+                  {link.subLinks.map((sub) => (
+                    <li key={sub.path} className="header__dropdown__item">
+                      <Link to={sub.path}>
+                        {sub.icon}
+                        <span>{t(sub.labelKey)}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>

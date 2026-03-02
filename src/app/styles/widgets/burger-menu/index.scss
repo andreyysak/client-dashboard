@@ -6,84 +6,123 @@
   top: calc(100% + 10px);
   left: 0;
   right: 0;
-  z-index: 100;
-  background-color: $color-light-200;
+  z-index: 1000;
+  background-color: var(--bg-card);
   border-radius: $border-radius-xl;
   padding: $padding-desktop;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  border: 1px solid $color-light-400;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 
   &__nav {
-    display: flex;
-    justify-content: center;
-
     &__list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 8px;
       list-style: none;
       padding: 0;
       margin: 0;
-      width: 100%;
 
       &--item {
         display: flex;
         align-items: center;
         gap: 15px;
-        padding: 12px 20px;
-        background-color: $color-light-300;
+        padding: 14px 20px;
+        background-color: var(--bg-page);
         border-radius: $border-radius-sm;
         transition: $transition-base;
+        cursor: pointer;
 
-        &:hover {
-          background-color: $color-light-400;
+        &.active {
+          background-color: var(--border-color);
         }
 
         a {
           text-decoration: none;
-          color: inherit;
+          color: var(--text-main);
           font-weight: $font-weight-medium;
           flex-grow: 1;
+          font-size: $font-size-body-1;
+        }
+
+        svg {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+
+  &__arrow {
+    transition: transform 0.3s ease;
+    color: var(--text-muted);
+
+    &.rotated {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__sub-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    background-color: rgba($color-light-400, 0.1);
+    border-radius: 0 0 $border-radius-sm $border-radius-sm;
+
+    &.open {
+      max-height: 500px;
+      padding-block: 8px;
+    }
+
+    &--item {
+      a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 40px;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-size: $font-size-body-2;
+        transition: $transition-base;
+
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        &:hover {
+          color: var(--color-info);
+          background-color: var(--bg-card);
         }
       }
     }
   }
 
   &__bottom {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    gap: 16px;
 
     &__controls {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 16px 30px;
-      background-color: $color-light-400;
+      justify-content: space-around;
+      padding: 12px;
+      background-color: var(--bg-page);
       border-radius: $border-radius-xl;
-      width: 100%;
 
       &--item {
         background: none;
         border: none;
+        padding: 10px;
+        color: var(--text-main);
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px;
-        color: inherit;
         border-radius: 50%;
         transition: $transition-base;
 
         &:hover {
-          background-color: $color-light-500;
-        }
-
-        a {
-          display: flex;
-          color: inherit;
+          background-color: var(--border-color);
         }
       }
     }
@@ -119,20 +158,14 @@
   .burger-menu {
     padding: $padding-mobile;
 
-    &__bottom {
-      margin-top: 30px;
-
-      &__controls {
-        gap: 15px;
-      }
+    &__sub-list--item a {
+      padding-left: 50px;
     }
   }
 }
 
 @media (min-width: $breakpoint-tablet-min) {
-  .burger-menu {
-    &__bottom {
-      display: none;
-    }
+  .burger-menu__bottom {
+    display: none;
   }
 }
