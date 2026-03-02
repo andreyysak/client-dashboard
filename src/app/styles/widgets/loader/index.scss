@@ -1,58 +1,84 @@
+@use "../../common/variables" as *;
+
 .loader-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
-  padding: 3rem 1rem;
-  gap: 1.5rem;
-}
-
-.loading-text {
-  color: #888;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  font-weight: 400;
+  min-height: 300px;
+  width: 100%;
+  gap: 2rem;
+  background: rgba($color-light-100, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: $border-radius-xl;
 }
 
 .spinner {
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-top-color: $color-sys-light-blue-70;
+    animation: spinner-spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+
+    &:nth-child(2) {
+      width: 70%;
+      height: 70%;
+      border-top-color: $color-sys-light-purple-60;
+      animation-delay: -0.2s;
+      animation-direction: reverse;
+    }
+
+    &:nth-child(3) {
+      width: 40%;
+      height: 40%;
+      border-top-color: $color-sys-light-green-50;
+      animation-delay: -0.4s;
+    }
+  }
+
+  // Сяйво в центрі
+  &::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: $color-sys-light-blue-70;
+    border-radius: 50%;
+    box-shadow: 0 0 15px $color-sys-light-blue-70;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
 }
 
-.ring {
-  position: absolute;
-  inset: 0;
-  border: 4px solid transparent;
-  border-top-color: #6366f1;
-  border-radius: 50%;
-  animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-
-  &:nth-child(2) {
-    border-top-color: #a78bfa;
-    animation-delay: -0.3s;
-  }
-  &:nth-child(3) {
-    border-top-color: #c4b5fd;
-    animation-delay: -0.6s;
-  }
-  &:nth-child(4) {
-    border-top-color: #ddd6fe;
-    animation-delay: -0.9s;
-  }
+.loading-text {
+  font-size: $font-size-body-2;
+  font-weight: $font-weight-medium;
+  color: $color-sys-light-gray-60;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: fade 1.5s ease-in-out infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(360deg);
-    opacity: 0.2;
-  }
+@keyframes spinner-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes fade {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
