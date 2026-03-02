@@ -55,7 +55,8 @@
       "engine": "Двигун",
       "fuel": "Пальне",
       "color": "Колір",
-      "unit_km": "км"
+      "unit_km": "км",
+      "selected_success": "chosen successful"
     },
     "features": {
       "stage1": "Stage 1",

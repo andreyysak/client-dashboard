@@ -55,7 +55,8 @@
       "engine": "Engine",
       "fuel": "Fuel",
       "color": "Color",
-      "unit_km": "km"
+      "unit_km": "km",
+      "selected_success": "chosen successful"
     },
     "features": {
       "stage1": "Stage 1",
