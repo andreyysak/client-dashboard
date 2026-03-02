@@ -48,6 +48,12 @@
   align-items: center;
 }
 
+@mixin flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 @mixin grid($columns: 1, $gap: $padding-mobile) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);

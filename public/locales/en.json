@@ -12,7 +12,19 @@
     "title": "Register page"
   },
   "profile": {
-    "title": "Profile page"
+    "title": "Profile Settings",
+    "user_fields": {
+      "name": "Name",
+      "email": "Email Address",
+      "location": "Location",
+      "role": "Account Role",
+      "phone": "Mobile",
+      "id": "User ID",
+      "joined": "Joined since"
+    },
+    "bank_card": "Active account",
+    "edit": "Edit",
+    "not_found": "User data not found"
   },
   "header": {
     "title": "Dashboard",

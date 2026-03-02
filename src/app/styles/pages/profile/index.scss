@@ -1,0 +1,164 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $padding-mobile;
+  padding: $padding-mobile;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include mq($breakpoint-desktop-sm-min) {
+    grid-template-columns: 380px 1fr;
+    gap: $padding-desktop;
+    padding: $padding-desktop;
+  }
+}
+
+.profile-main-card {
+  background: var(--bg-card);
+  border-radius: $border-radius-xl;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  height: fit-content;
+
+  &__header {
+    width: 100%;
+    height: 320px;
+    background: var(--btn-bg);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: $padding-tablet;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.profile-side-column {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-mobile;
+
+  @include mq($breakpoint-desktop-sm-min) {
+    gap: $padding-desktop;
+  }
+}
+
+.profile-side-card {
+  background: var(--bg-card);
+  border-radius: $border-radius-xl;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: $padding-tablet;
+
+  &__header {
+    @include flex-between;
+    margin-bottom: 20px;
+  }
+}
+
+.profile-title {
+  font-size: $font-size-h6;
+  font-weight: $font-weight-bold;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.profile-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-info-item {
+  margin-block: 10px;
+  label {
+    display: block;
+    font-size: $font-size-overline;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: $font-weight-medium;
+  }
+
+  p {
+    font-size: $font-size-body-1;
+    font-weight: $font-weight-medium;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 8px;
+    margin: 0;
+  }
+}
+
+.profile-edit-tag {
+  padding: 6px 16px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: $border-radius-sm * 1.5;
+  font-size: $font-size-caption;
+  font-weight: $font-weight-semibold;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: var(--btn-hover);
+  }
+}
+
+.profile-role-badge {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 12px;
+  background: var(--color-accent);
+  color: $color-light-100;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-overline;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+.bank-account {
+  &__label {
+    display: block;
+    font-size: $font-size-body-2;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  &__number {
+    font-size: $font-size-subtitle-1;
+    font-weight: $font-weight-semibold;
+    color: var(--text-main);
+    letter-spacing: 1px;
+    margin: 0;
+  }
+}
+
+.profile-error {
+  @include flex-center;
+  min-height: 400px;
+  color: var(--color-error);
+  font-weight: $font-weight-medium;
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .profile-main-card__header {
+    height: 250px;
+  }
+
+  .profile-main-card__content,
+  .profile-side-card {
+    padding: $padding-mobile;
+  }
+}
