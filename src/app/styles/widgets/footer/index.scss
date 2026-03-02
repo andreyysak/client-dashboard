@@ -1,0 +1,125 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+
+.footer {
+  position: fixed;
+  @include container;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  min-height: 80px;
+  padding: 15px $padding-desktop;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba($color-light-300, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid $color-light-400;
+  border-radius: $border-radius-xl $border-radius-xl 0 0;
+  z-index: 50;
+
+  &__currency {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--title {
+      font-size: $font-size-overline;
+      font-weight: $font-weight-bold;
+      color: $color-sys-light-gray-60;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    &--item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: $font-size-body-2;
+      font-weight: $font-weight-medium;
+      margin: 0;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        color: $color-sys-light-green-50;
+      }
+
+      span {
+        color: $color-sys-light-gray-60;
+        font-weight: $font-weight-regular;
+        font-size: $font-size-caption;
+      }
+    }
+  }
+
+  &__copyright {
+    text-align: center;
+
+    &--text {
+      font-size: $font-size-caption;
+      color: $color-sys-light-gray-60;
+      margin: 0;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &--link {
+      color: $color-dark-100;
+      transition: $transition-base;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $color-sys-light-blue-70;
+        transform: translateY(-2px);
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .footer {
+    padding: 15px $padding-tablet;
+
+    &__copyright {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .footer {
+    padding: $padding-mobile;
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    text-align: center;
+
+    &__currency {
+      flex-direction: row;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__copyright {
+      display: block;
+      order: 3;
+    }
+
+    &__socials {
+      gap: 30px;
+    }
+  }
+}

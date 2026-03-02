@@ -16,6 +16,7 @@ declare global{
 	const LoginSuccessPage: typeof import('./src/pages/LoginSuccessPage/LoginSuccessPage')['LoginSuccessPage']
 	const NotFoundPage: typeof import('./src/pages/NotFoundPage/NotFoundPage')['NotFoundPage']
 	const ProfilePage: typeof import('./src/pages/ProfilePage/ProfilePage')['ProfilePage']
+	const BurgerMenu: typeof import('./src/widgets/BurgerMenu/BurgerMenu')['BurgerMenu']
 	const Footer: typeof import('./src/widgets/Footer/Footer')['Footer']
 	const Header: typeof import('./src/widgets/Header/Header')['Header']
 	const Loader: typeof import('./src/widgets/Loader/Loader')['Loader']

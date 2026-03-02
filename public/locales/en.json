@@ -31,5 +31,9 @@
     "movies": "Movies",
     "tv_shows": "TV Shows",
     "gym": "Gym"
+  },
+  "footer": {
+    "currency_title": "Exchange rates",
+    "copyright": "© 2026 Dashboard. All rights reserved."
   }
 }
