@@ -47,5 +47,19 @@
   "footer": {
     "currency_title": "Курс валют",
     "copyright": "© 2026 Дашборд. Всі права захищені."
+  },
+  "garage": {
+    "title": "Мої авто",
+    "specs": {
+      "mileage": "Пробіг",
+      "engine": "Двигун",
+      "fuel": "Пальне",
+      "color": "Колір",
+      "unit_km": "км"
+    },
+    "features": {
+      "stage1": "Stage 1",
+      "sport_exhaust": "Спортивний вихлоп"
+    }
   }
 }

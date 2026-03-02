@@ -47,5 +47,19 @@
   "footer": {
     "currency_title": "Exchange rates",
     "copyright": "© 2026 Dashboard. All rights reserved."
+  },
+  "garage": {
+    "title": "My cars",
+    "specs": {
+      "mileage": "Mileage",
+      "engine": "Engine",
+      "fuel": "Fuel",
+      "color": "Color",
+      "unit_km": "km"
+    },
+    "features": {
+      "stage1": "Stage 1",
+      "sport_exhaust": "Sport Exhaust"
+    }
   }
 }

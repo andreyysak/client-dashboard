@@ -1,0 +1,173 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+
+.garage {
+  padding: $padding-desktop;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  h4 {
+    margin-bottom: 24px;
+    font-size: $font-size-h4;
+    color: var(--text-main);
+  }
+
+  &__cars {
+    @include grid(3, 24px);
+
+    &__item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius-xl;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-focus);
+        box-shadow: var(--shadow-md);
+      }
+
+      &--header {
+        @include flex-between;
+        align-items: flex-start;
+
+        .brand-info {
+          h6 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+          }
+          .plate {
+            display: inline-block;
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--text-secondary);
+            background: var(--bg-page);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            letter-spacing: 0.5px;
+          }
+        }
+
+        .year {
+          font-size: 13px;
+          color: var(--text-muted);
+          font-weight: 600;
+          background: var(--bg-page);
+          padding: 4px 10px;
+          border-radius: 12px;
+        }
+      }
+
+      &--specs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        padding-block: 16px;
+        border-block: 1px solid var(--border-color);
+
+        .spec {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.8px;
+          }
+          .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+          }
+        }
+      }
+
+      &--features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        min-height: 26px;
+
+        .badge {
+          font-size: 10px;
+          font-weight: 800;
+          padding: 5px 10px;
+          border-radius: 8px;
+          background: var(--bg-page);
+          color: var(--text-secondary);
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+
+          &--power {
+            background: rgba($color-sys-light-red-60, 0.1);
+            color: var(--color-error);
+            border: 1px solid rgba($color-sys-light-red-60, 0.2);
+          }
+        }
+      }
+
+      &--footer {
+        margin-top: auto;
+        .vin {
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 12px;
+          color: var(--text-muted);
+          letter-spacing: 1.5px;
+          opacity: 0.8;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .garage {
+    &__cars {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .garage {
+    padding: $padding-tablet;
+
+    h4 {
+      font-size: $font-size-h5;
+      text-align: center;
+    }
+
+    &__cars {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .garage {
+    padding: $padding-mobile;
+
+    &__cars__item {
+      padding: 16px;
+
+      &--header .brand-info h6 {
+        font-size: 18px;
+      }
+    }
+  }
+}
