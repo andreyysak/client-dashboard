@@ -8,10 +8,10 @@ import { getErrorMessage } from '@/shared/api/axios.ts'
 
 export const useTrips = () => {
   const queryClient = useQueryClient()
-  const { setLoading, setError, search, page, limit } = useTripStore()
+  const { setLoading, setError } = useTripStore()
 
   const tripsQuery = useQuery<Trip[], ApiError>({
-    queryKey: ['trips', { search, page, limit }],
+    queryKey: ['trips',],
     queryFn: async () => {
       setLoading(true)
       try {
@@ -52,7 +52,6 @@ export const useTrips = () => {
 
   return {
     trips: tripsQuery.data ?? [],
-    limit,
     isLoading: tripsQuery.isLoading,
     isFetching: tripsQuery.isFetching,
     isError: tripsQuery.isError,
