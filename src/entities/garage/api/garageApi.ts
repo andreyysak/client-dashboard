@@ -1,5 +1,4 @@
 import { Garage } from '@/entities/garage'
-import { toast } from 'react-toastify'
 import { api } from '@/shared/api/axios.ts'
 
 export const GarageApi = {
@@ -7,9 +6,9 @@ export const GarageApi = {
     try {
       const response = await api.get<Garage[]>('/cars')
       return response.data || []
-    } catch {
-      toast.error('Failed to load cars')
-      return []
+    } catch (error) {
+      console.error('Failed to load:', error)
+      throw error
     }
   },
 
@@ -17,9 +16,9 @@ export const GarageApi = {
     try {
       const response = await api.get<Garage>(`/cars/${id}`)
       return response.data
-    } catch {
-      toast.error('Failed to load car details')
-      return null
+    } catch (error) {
+      console.error('Failed to load:', error)
+      throw error
     }
   },
 }

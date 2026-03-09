@@ -62,5 +62,26 @@
       "stage1": "Stage 1",
       "sport_exhaust": "Sport Exhaust"
     }
+  },
+  "trips": {
+    "search_placeholder": "Search by direction",
+    "add_btn": "New Trip",
+    "col_direction": "Direction",
+    "col_km": "Kilometres",
+    "col_car": "Car",
+    "col_date": "Date",
+    "actions": "Actions",
+    "empty_list": "No trips found",
+    "stats_title": "Trip Statistics",
+    "delete_confirm": "Are you sure you want to delete this trip?",
+    "messages": {
+      "load_error": "Failed to load trips",
+      "create_success": "Trip added successfully",
+      "create_error": "Could not create trip",
+      "update_success": "Trip updated successfully",
+      "update_error": "Failed to update trip",
+      "delete_success": "Trip deleted",
+      "delete_error": "Could not delete trip"
+    }
   }
 }

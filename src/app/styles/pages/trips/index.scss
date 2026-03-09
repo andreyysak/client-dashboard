@@ -1,0 +1,145 @@
+@use "../../common/variables" as *;
+@use "../../common/mixins" as *;
+@use "../../common/themes" as *;
+
+.trips {
+  &__topbar {
+    @include flex-between;
+
+    &__input {
+      width: 40%;
+      border: 2px solid var(--border-color);
+      background-color: var(--btn-bg);
+      padding: 10px 20px;
+      border-radius: $border-radius-xl;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: var(--text-secondary);
+        font-size: $font-size-subtitle-2;
+        font-weight: $font-weight-medium;
+
+        &::placeholder {
+          color: var(--text-muted);
+        }
+      }
+
+      &:focus-within {
+        border-color: var(--color-info);
+      }
+    }
+
+    &__tools {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      &-columns {
+        position: relative;
+
+        button {
+          background-color: var(--btn-bg);
+          border: 1px solid var(--border-color);
+          border-radius: $border-radius-sm;
+          padding: 8px 12px;
+          color: var(--btn-text);
+          cursor: pointer;
+        }
+
+        &-menu {
+          position: absolute;
+          top: 20px;
+          z-index: 10;
+          right: 0;
+          min-width: 160px;
+
+          background: var(--btn-bg);
+          border: 1px solid var(--border-color);
+          border-radius: $border-radius-sm;
+
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: var(--text-secondary);
+          cursor: pointer;
+        }
+
+        input {
+          cursor: pointer;
+        }
+      }
+
+      &-perpage {
+        width: 30%;
+        border: 2px solid var(--border-color);
+        background-color: var(--btn-bg);
+        padding: 10px 20px;
+        border-radius: $border-radius-xl;
+        display: flex;
+        align-items: center;
+
+        input {
+          width: 100%;
+          border: none;
+          outline: none;
+          background: transparent;
+          color: var(--text-secondary);
+          font-size: $font-size-subtitle-2;
+          font-weight: $font-weight-medium;
+          text-align: center;
+
+          &::placeholder {
+            color: var(--text-muted);
+            text-align: center;
+          }
+        }
+
+        &:focus-within {
+          border-color: var(--color-info);
+        }
+
+        input[type="number"] {
+          -moz-appearance: textfield;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+
+      &-icon {
+        background-color: var(--btn-bg);
+        border: 1px solid var(--border-color);
+        border-radius: $border-radius-sm;
+        padding: 8px;
+        color: var(--btn-text);
+      }
+
+      &-add {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 6px;
+        background-color: var(--btn-bg);
+        border: 1px solid var(--border-color);
+        border-radius: $border-radius-sm;
+      }
+    }
+  }
+}

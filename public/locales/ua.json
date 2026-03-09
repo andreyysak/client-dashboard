@@ -62,5 +62,26 @@
       "stage1": "Stage 1",
       "sport_exhaust": "Спортивний вихлоп"
     }
+  },
+  "trips": {
+    "search_placeholder": "Пошук за напрямком",
+    "add_btn": "Нова поїздка",
+    "col_direction": "Напрямок",
+    "col_km": "Кілометри",
+    "col_car": "Авто",
+    "col_date": "Дата",
+    "actions": "Дії",
+    "empty_list": "Поїздок не знайдено",
+    "stats_title": "Статистика поїздок",
+    "delete_confirm": "Ви впевнені, що хочете видалити цю поїздку?",
+    "messages": {
+      "load_error": "Помилка завантаження поїздок",
+      "create_success": "Поїздку успішно додано",
+      "create_error": "Не вдалося створити поїздку",
+      "update_success": "Дані оновлено",
+      "update_error": "Помилка при оновленні",
+      "delete_success": "Поїздку видалено",
+      "delete_error": "Не вдалося видалити поїздку"
+    }
   }
 }

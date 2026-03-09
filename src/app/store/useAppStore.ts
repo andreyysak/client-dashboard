@@ -17,6 +17,7 @@ interface AppState {
   setLanguage: (lang: Language) => void
   toggleSidebar: () => void
   authenticate: (token: string) => void
+  logout: () => void
   setLayout: (layout: Layout) => void
 }
 
@@ -52,11 +53,30 @@ export const useAppStore = create<AppState>()(
         set({ isAuthenticated: true, token })
       },
 
+      logout: () => {
+        set({
+          isAuthenticated: false,
+          token: null,
+          isSidebarOpen: true,
+        })
+
+        if (typeof window !== 'undefined') {
+          window.location.href = '/login'
+        }
+      },
+
       setLayout: (layout) => set({ layout }),
     }),
     {
       name: 'app-storage',
       storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        token: state.token,
+        theme: state.theme,
+        language: state.language,
+        layout: state.layout,
+        isAuthenticated: state.isAuthenticated,
+      }),
     },
   ),
 )
