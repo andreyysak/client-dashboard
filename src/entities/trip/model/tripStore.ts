@@ -16,6 +16,7 @@ interface TripState {
   isFormOpen: boolean
   isChartOpen: boolean
   perPage: number
+  pageIndex: number
   openDropdown: boolean
   columnVisibility: VisibilityState
   columnFilters: ColumnFiltersState
@@ -28,6 +29,7 @@ interface TripState {
   setFormOpen: (value: boolean) => void
   setChartOpen: (value: boolean) => void
   setPerPage: (page: number) => void
+  setPageIndex: (index: number) => void
   setOpenDropDown: (value: boolean) => void
   setColumnVisibility: (updater: Updater<VisibilityState>) => void
   setColumnFilters: (updater: Updater<ColumnFiltersState>) => void
@@ -44,6 +46,7 @@ export const useTripStore = create<TripState>()(
       isFormOpen: false,
       isChartOpen: false,
       perPage: 7,
+      pageIndex: 0,
       openDropdown: false,
       columnVisibility: {},
       columnFilters: [],
@@ -56,6 +59,7 @@ export const useTripStore = create<TripState>()(
       setFormOpen: (isFormOpen) => set({ isFormOpen }),
       setChartOpen: (isChartOpen) => set({ isChartOpen }),
       setPerPage: (perPage) => set({ perPage }),
+      setPageIndex: (pageIndex) => set({ pageIndex }),
       setOpenDropDown: (openDropdown) => set({ openDropdown }),
       setColumnVisibility: (updater) =>
         set((state) => ({

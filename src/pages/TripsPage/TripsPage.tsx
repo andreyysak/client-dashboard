@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next'
 import {
   ChartArea,
+  ChevronLeft,
+  ChevronRight,
   LayoutGrid,
   List,
   Loader,
   Minus,
   PlusIcon,
+  Settings2,
 } from 'lucide-react'
 import { getTripColumns, useTripStore } from '@/entities/trip'
 import { useTrips } from '@/entities/trip/api/tripQuery.ts'
@@ -17,10 +20,12 @@ import {
   getFilteredRowModel,
   getSortedRowModel,
 } from '@tanstack/react-table'
+import excelIco from '@/assets/icons/excel.svg';
+import pdfIco from '@/assets/icons/pdf.svg';
 
 export const TripsPage = () => {
   const { t } = useTranslation()
-  const {view, setView, perPage, setPerPage, columnVisibility, setColumnVisibility, openDropdown, setOpenDropDown, columnFilters, setColumnFilters, sorting, setSorting, globalFilter, setGlobalFilter} = useTripStore()
+  const {view, setView, perPage, setPerPage, pageIndex, setPageIndex, columnVisibility, setColumnVisibility, openDropdown, setOpenDropDown, columnFilters, setColumnFilters, sorting, setSorting, globalFilter, setGlobalFilter} = useTripStore()
   const {trips, isLoading} = useTrips()
 
   const columns = useMemo(() => getTripColumns(t), [t])
@@ -37,6 +42,19 @@ export const TripsPage = () => {
       columnFilters,
       sorting,
       globalFilter,
+      pagination: {
+        pageIndex,
+        pageSize: perPage,
+      },
+    },
+    onPaginationChange: (updater) => {
+      const newPagination =
+        typeof updater === 'function'
+          ? updater({ pageIndex, pageSize: perPage })
+          : updater
+
+      setPageIndex(newPagination.pageIndex)
+      setPerPage(newPagination.pageSize)
     },
     onColumnVisibilityChange: setColumnVisibility,
     onColumnFiltersChange: setColumnFilters,
@@ -62,44 +80,40 @@ export const TripsPage = () => {
         </div>
         <div className="trips__topbar__tools">
           <div className="trips__topbar__tools-columns">
-            <button onClick={() => setOpenDropDown(!openDropdown)}>Columns</button>
+            <button
+              className={openDropdown ? 'active' : ''}
+              onClick={() => setOpenDropDown(!openDropdown)}
+            >
+              <Settings2 size={18} />
+              <span>{t('trips.column_btn')}</span>
+            </button>
 
-            {openDropdown && (
-              <div className="dropdown">
-                {/*{table.getAllLeafColumns().map((column) => (*/}
-                {/*  <label key={column.id}>*/}
-                {/*    <input*/}
-                {/*      type="checkbox"*/}
-                {/*      checked={column.getIsVisible()}*/}
-                {/*      onChange={column.getToggleVisibilityHandler()}*/}
-                {/*    />*/}
-                {/*    {column.id}*/}
-                {/*  </label>*/}
-                {/*))}*/}
+            <div
+              className={`trips__topbar__tools-columns-menu ${openDropdown ? 'active' : ''}`}
+            >
+              {table.getAllLeafColumns().map((column) => (
+                <div key={column.id} className="trips__topbar__tools-columns-item">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={column.getIsVisible()}
+                      onChange={column.getToggleVisibilityHandler()}
+                    />
+                    <span>{column.id}</span>
+                  </label>
 
-                {table.getAllLeafColumns().map((column) => (
-                  <div key={column.id}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={column.getIsVisible()}
-                        onChange={column.getToggleVisibilityHandler()}
-                      />
-                      {column.id}
-                    </label>
-
-                    {column.getCanFilter() && (
-                      <input
-                        type="text"
-                        value={(column.getFilterValue() ?? '') as string}
-                        onChange={(e) => column.setFilterValue(e.target.value)}
-                        placeholder={`Filter ${column.id}`}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+                  {column.getCanFilter() && (
+                    <input
+                      type="text"
+                      className="trips__topbar__tools-columns-filter"
+                      value={(column.getFilterValue() ?? '') as string}
+                      onChange={(e) => column.setFilterValue(e.target.value)}
+                      placeholder={`Filter ${column.id}...`}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="trips__topbar__tools-perpage">
             <button onClick={() => setPerPage(perPage - 1)}>
@@ -122,6 +136,12 @@ export const TripsPage = () => {
           </button>
           <button className="trips__topbar__tools-icon">
             <ChartArea />
+          </button>
+          <button className="trips__topbar__tools-icon">
+            <img src={excelIco} alt="excel" />
+          </button>
+          <button className="trips__topbar__tools-icon">
+            <img src={pdfIco} alt="pdf" />
           </button>
           <button className="trips__topbar__tools-add">
             <PlusIcon />
@@ -165,7 +185,7 @@ export const TripsPage = () => {
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Prev
+          <ChevronLeft />
         </button>
 
         <span>
@@ -173,7 +193,7 @@ export const TripsPage = () => {
         </span>
 
         <button onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-          Next
+          <ChevronRight />
         </button>
       </div>
     </div>

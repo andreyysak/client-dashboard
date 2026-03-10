@@ -66,6 +66,7 @@
   "trips": {
     "search_placeholder": "Пошук за напрямком",
     "add_btn": "Нова поїздка",
+    "column_btn": "Колонки",
     "col_direction": "Напрямок",
     "col_km": "Кілометри",
     "col_car": "Авто",

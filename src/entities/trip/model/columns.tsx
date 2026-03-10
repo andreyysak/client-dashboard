@@ -24,12 +24,12 @@ export const getTripColumns = (t: (key: string) => string): ColumnDef<Trip>[] =>
     header: t('trips.actions'),
     enableHiding: false,
     cell: () => (
-      <div>
-        <button>
-          <Trash />
+      <div className="trips__table__actions">
+        <button className="trips__table__actions-delete">
+          <Trash size={18} />
         </button>
-        <button>
-          <Pen />
+        <button className="trips__table__actions-edit">
+          <Pen size={18} />
         </button>
       </div>
     ),

@@ -3,143 +3,441 @@
 @use "../../common/themes" as *;
 
 .trips {
+  display: flex;
+  flex-direction: column;
+  gap: $margin-desktop;
+  padding: $padding-mobile;
+  max-width: 1400px;
+  margin: 0 auto;
+
   &__topbar {
-    @include flex-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: var(--bg-card);
+    padding: 12px 24px;
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-xl;
+    box-shadow: var(--shadow-sm);
 
     &__input {
-      width: 40%;
-      border: 2px solid var(--border-color);
-      background-color: var(--btn-bg);
-      padding: 10px 20px;
-      border-radius: $border-radius-xl;
+      position: relative;
+      flex: 1;
+      max-width: 400px;
       display: flex;
       align-items: center;
+      background-color: var(--bg-page);
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius-sm;
+      padding: 8px 16px;
+      transition: $transition-base, border-color 0.3s ease;
 
       input {
         width: 100%;
         border: none;
         outline: none;
         background: transparent;
-        color: var(--text-secondary);
-        font-size: $font-size-subtitle-2;
+        color: var(--text-main);
+        font-family: $font-family-primary;
+        font-size: $font-size-body-2;
         font-weight: $font-weight-medium;
 
         &::placeholder {
           color: var(--text-muted);
+          font-style: italic;
+          font-size: $font-size-caption;
         }
       }
 
       &:focus-within {
-        border-color: var(--color-info);
+        border-color: var(--border-focus);
+        background-color: var(--bg-card);
       }
     }
 
     &__tools {
       display: flex;
-      gap: 20px;
       align-items: center;
+      gap: 12px;
 
       &-columns {
         position: relative;
 
         button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
           background-color: var(--btn-bg);
           border: 1px solid var(--border-color);
           border-radius: $border-radius-sm;
-          padding: 8px 12px;
+          padding: 10px;
           color: var(--btn-text);
           cursor: pointer;
+          transition: $transition-base;
+
+          &:hover {
+            background-color: var(--btn-hover);
+          }
         }
 
         &-menu {
           position: absolute;
-          top: 20px;
-          z-index: 10;
+          top: calc(100% + 10px);
           right: 0;
-          min-width: 160px;
-
-          background: var(--btn-bg);
+          z-index: 100;
+          min-width: 180px;
+          background: var(--bg-card);
           border: 1px solid var(--border-color);
           border-radius: $border-radius-sm;
-
-          padding: 10px;
+          padding: 12px;
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 10px;
+          box-shadow: var(--shadow-md);
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: all 0.3s ease;
 
-          box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+          &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
         }
 
         label {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
           color: var(--text-secondary);
+          font-size: $font-size-caption;
+          font-weight: $font-weight-bold;
+          text-transform: $text-transform-uppercase;
           cursor: pointer;
+          transition: color 0.2s;
+
+          &:hover {
+            color: var(--color-accent);
+          }
         }
 
-        input {
-          cursor: pointer;
+        input[type="checkbox"] {
+          accent-color: var(--color-accent);
+          width: 16px;
+          height: 16px;
         }
       }
 
       &-perpage {
-        width: 30%;
-        border: 2px solid var(--border-color);
-        background-color: var(--btn-bg);
-        padding: 10px 20px;
-        border-radius: $border-radius-xl;
         display: flex;
         align-items: center;
+        background-color: var(--btn-bg);
+        border: 1px solid var(--border-color);
+        border-radius: $border-radius-sm;
+        padding: 6px 12px;
+        width: 80px;
 
         input {
           width: 100%;
           border: none;
           outline: none;
           background: transparent;
-          color: var(--text-secondary);
-          font-size: $font-size-subtitle-2;
-          font-weight: $font-weight-medium;
+          color: var(--text-main);
+          font-family: $font-family-primary;
+          font-size: $font-size-button;
+          font-weight: $font-weight-bold;
           text-align: center;
 
-          &::placeholder {
-            color: var(--text-muted);
-            text-align: center;
-          }
-        }
-
-        &:focus-within {
-          border-color: var(--color-info);
-        }
-
-        input[type="number"] {
-          -moz-appearance: textfield;
-
-          &::-webkit-outer-spin-button,
-          &::-webkit-inner-spin-button {
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
             -webkit-appearance: none;
             margin: 0;
           }
         }
+
+        &:focus-within {
+          border-color: var(--border-focus);
+        }
       }
 
       &-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
         background-color: var(--btn-bg);
         border: 1px solid var(--border-color);
         border-radius: $border-radius-sm;
-        padding: 8px;
         color: var(--btn-text);
+        cursor: pointer;
+        transition: $transition-base;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+          filter: grayscale(1) opacity(0.7);
+          transition: $transition-base;
+        }
+
+        &:hover {
+          background-color: var(--btn-hover);
+          color: var(--color-accent);
+
+          img {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.1);
+          }
+        }
       }
 
       &-add {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
+        padding: 8px 16px;
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+        border: none;
+        border-radius: $border-radius-sm;
+        font-weight: $font-weight-bold;
+        font-size: $font-size-button;
+        font-style: italic;
+        text-transform: $text-transform-button;
+        cursor: pointer;
+        transition: transform 0.2s, filter 0.2s;
+
+        &:hover {
+          filter: brightness(0.9);
+          transform: translateY(-1px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+
+    thead {
+      background-color: var(--bg-page);
+
+      th {
+        padding: 16px;
+        font-size: $font-size-overline;
+        font-weight: $font-weight-bold;
+        text-transform: $text-transform-uppercase;
+        letter-spacing: $letter-spacing-overline;
+        color: var(--text-muted);
+        border-bottom: 2px solid var(--border-color);
+        font-style: italic;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: rgba(var(--color-accent), 0.03);
+        }
+
+        &:not(:last-child) td {
+          border-bottom: 1px solid var(--border-color);
+        }
+      }
+
+      td {
+        padding: 14px 16px;
+        font-size: $font-size-body-2;
+        font-weight: $font-weight-medium;
+        color: var(--text-main);
+        vertical-align: middle;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 6px;
         background-color: var(--btn-bg);
         border: 1px solid var(--border-color);
         border-radius: $border-radius-sm;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+
+        &:hover {
+          background-color: var(--btn-hover);
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-sm);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+          transform: none;
+        }
       }
+
+      &-delete {
+        color: var(--color-error);
+
+        &:hover {
+          border-color: var(--color-error) !important;
+          background-color: rgba(var(--color-error), 0.05) !important;
+        }
+      }
+
+      &-edit {
+        color: var(--color-info);
+
+        &:hover {
+          border-color: var(--color-info) !important;
+          background-color: rgba(var(--color-info), 0.05) !important;
+        }
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    padding-block: 20px;
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--btn-bg);
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius-sm;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: $transition-base;
+
+      &:hover:not(:disabled) {
+        background-color: var(--btn-hover);
+        border-color: var(--color-accent);
+        color: var(--color-accent);
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+
+    &-info {
+      font-size: $font-size-button;
+      font-weight: $font-weight-bold;
+      color: var(--text-main);
+      font-style: italic;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .trips {
+    &__topbar {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 20px;
+
+      &__input {
+        max-width: none;
+      }
+
+      &__tools {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .trips {
+    &__table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    &__topbar__tools {
+      gap: 10px;
+
+      &-add {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .trips {
+    padding: $padding-mobile;
+    gap: 20px;
+
+    &__topbar {
+      border-radius: $border-radius-sm;
+
+      &__tools {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        &-add {
+          grid-column: span 2;
+        }
+
+        &-perpage {
+          width: 100%;
+        }
+      }
+    }
+
+    &__pagination {
+      gap: 10px;
     }
   }
 }

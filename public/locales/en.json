@@ -66,6 +66,7 @@
   "trips": {
     "search_placeholder": "Search by direction",
     "add_btn": "New Trip",
+    "column_btn": "Columns",
     "col_direction": "Direction",
     "col_km": "Kilometres",
     "col_car": "Car",
