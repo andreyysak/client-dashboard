@@ -381,15 +381,15 @@
     &__topbar {
       flex-direction: column;
       align-items: stretch;
-      padding: 20px;
+      padding: 16px;
 
       &__input {
-        max-width: none;
+        max-width: 100%;
       }
 
       &__tools {
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
       }
     }
   }
@@ -397,18 +397,28 @@
 
 @media (max-width: $breakpoint-tablet-max) {
   .trips {
-    &__table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
+    gap: 16px;
+
+    &__topbar {
+      &__tools {
+        gap: 12px;
+
+        &-columns {
+          &-menu {
+            right: auto;
+            left: 0;
+          }
+        }
+      }
     }
 
-    &__topbar__tools {
-      gap: 10px;
+    &__table {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
 
-      &-add {
-        width: 100%;
-        justify-content: center;
+      th, td {
+        white-space: nowrap;
       }
     }
   }
@@ -416,28 +426,57 @@
 
 @media (max-width: $breakpoint-mobile-max) {
   .trips {
-    padding: $padding-mobile;
-    gap: 20px;
+    padding: 12px;
 
     &__topbar {
-      border-radius: $border-radius-sm;
+      padding: 12px;
+      border-radius: $border-radius-lg;
 
       &__tools {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
 
         &-add {
           grid-column: span 2;
+          justify-content: center;
+          width: 100%;
+        }
+
+        &-columns, &-perpage, &-icon {
+          width: 100%;
+        }
+
+        &-columns button {
+          width: 100%;
         }
 
         &-perpage {
-          width: 100%;
+          justify-content: space-between;
         }
       }
     }
 
+    &__table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+
+      th, td {
+        white-space: nowrap;
+      }
+    }
+
     &__pagination {
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      &-info {
+        width: 100%;
+        text-align: center;
+        order: -1;
+      }
     }
   }
 }
