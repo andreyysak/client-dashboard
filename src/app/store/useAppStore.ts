@@ -9,6 +9,7 @@ interface AppState {
   theme: Theme
   language: Language
   isSidebarOpen: boolean
+  isMenuOpen: boolean
   isAuthenticated: boolean
   layout: Layout
 
@@ -16,6 +17,7 @@ interface AppState {
   toggleTheme: () => void
   setLanguage: (lang: Language) => void
   toggleSidebar: () => void
+  setMenuOpen: (value: boolean) => void
   authenticate: (token: string) => void
   logout: () => void
   setLayout: (layout: Layout) => void
@@ -28,6 +30,7 @@ export const useAppStore = create<AppState>()(
       theme: 'light',
       language: 'ua',
       isSidebarOpen: true,
+      isMenuOpen: false,
       isAuthenticated: false,
       layout: 'classic',
 
@@ -41,6 +44,8 @@ export const useAppStore = create<AppState>()(
         set((state) => ({
           theme: state.theme === 'light' ? 'dark' : 'light',
         })),
+
+      setMenuOpen: (isMenuOpen) => set({isMenuOpen}),
 
       setLanguage: (language) => set({ language }),
 

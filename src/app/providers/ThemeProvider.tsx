@@ -20,7 +20,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const defaultProps = useMemo(
     () => ({
       theme,
-      setTheme: toggleTheme, // Або передай toggleTheme напряму
+      setTheme: toggleTheme,
     }),
     [theme, toggleTheme],
   )

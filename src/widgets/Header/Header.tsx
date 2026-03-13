@@ -1,17 +1,18 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import logo from '@/assets/images/logo.png'
 import { Link } from 'react-router'
 import { navLinks } from '@/shared/consts/NavLinks.tsx'
-import { Bolt, Globe, Menu, Moon, User, X, ChevronDown } from 'lucide-react'
+import { Bolt, Globe, Menu, Moon, Sun, User, X, ChevronDown } from 'lucide-react'
 import BurgerMenu from '@/widgets/BurgerMenu'
+import { useAppStore } from '@/app/store/useAppStore.ts'
 
 export const Header = () => {
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = useState(false)
+  const { isMenuOpen, setMenuOpen, language, setLanguage, theme, toggleTheme } =
+    useAppStore()
 
-  const toggleOpenBurgerMenu = () => {
-    setIsOpen((cur) => !cur)
+  const handleToggleLanguage = () => {
+    setLanguage(language === 'ua' ? 'en' : 'ua')
   }
 
   return (
@@ -54,33 +55,42 @@ export const Header = () => {
 
       <div className="header__right">
         <div className="header__right__controls">
-          <button className="header__right__controls--item">
-            <Globe />
+          <button
+            onClick={handleToggleLanguage}
+            className="header__right__controls--item"
+            title={language.toUpperCase()}
+          >
+            <Globe size={20} />
+            <span style={{ fontSize: '10px', marginLeft: '4px' }}>
+              {language.toUpperCase()}
+            </span>
           </button>
-          <button className="header__right__controls--item">
-            <Moon />
+
+          <button onClick={toggleTheme} className="header__right__controls--item">
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
+
           <button className="header__right__controls--item">
             <Link to="/settings">
-              <Bolt />
+              <Bolt size={20} />
             </Link>
           </button>
         </div>
 
         <div className="header__right__profile">
           <Link to="/profile">
-            <User />
+            <User size={20} />
           </Link>
         </div>
       </div>
 
       <div className="header__burger-btn">
-        <button onClick={toggleOpenBurgerMenu}>
-          {isOpen ? <X /> : <Menu size={28} />}
+        <button onClick={() => setMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {isOpen && <BurgerMenu />}
+      {isMenuOpen && <BurgerMenu />}
     </header>
   )
 }

@@ -1,5 +1,6 @@
 @use "../../common/variables" as *;
 @use "../../common/mixins" as *;
+@use "../../common/themes" as *;
 
 .footer {
   position: fixed;
@@ -13,9 +14,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba($color-light-300, 0.8);
+  background-color: color-mix(in srgb, var(--bg-card), transparent 20%);
   backdrop-filter: blur(10px);
-  border-top: 1px solid $color-light-400;
+  border-top: 1px solid var(--border-color);
   border-radius: $border-radius-xl $border-radius-xl 0 0;
   z-index: 50;
 
@@ -27,8 +28,8 @@
     &--title {
       font-size: $font-size-overline;
       font-weight: $font-weight-bold;
-      color: $color-sys-light-gray-60;
-      text-transform: uppercase;
+      color: var(--text-muted);
+      text-transform: $text-transform-uppercase;
       margin: 0;
     }
 
@@ -38,16 +39,17 @@
       gap: 8px;
       font-size: $font-size-body-2;
       font-weight: $font-weight-medium;
+      color: var(--text-main);
       margin: 0;
 
       svg {
         width: 14px;
         height: 14px;
-        color: $color-sys-light-green-50;
+        color: var(--color-success);
       }
 
       span {
-        color: $color-sys-light-gray-60;
+        color: var(--text-muted);
         font-weight: $font-weight-regular;
         font-size: $font-size-caption;
       }
@@ -59,7 +61,7 @@
 
     &--text {
       font-size: $font-size-caption;
-      color: $color-sys-light-gray-60;
+      color: var(--text-muted);
       margin: 0;
     }
   }
@@ -70,13 +72,13 @@
     gap: 20px;
 
     &--link {
-      color: $color-dark-100;
+      color: var(--text-secondary);
       transition: $transition-base;
       display: flex;
       align-items: center;
 
       &:hover {
-        color: $color-sys-light-blue-70;
+        color: var(--color-info);
         transform: translateY(-2px);
       }
 
