@@ -4,4 +4,16 @@
 body {
   background-color: var(--bg-page);
   @include container;
+
+  @media (max-width: $breakpoint-desktop-sm-max) {
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: $breakpoint-tablet-max) {
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: $breakpoint-mobile-max) {
+    padding-bottom: 160px;
+  }
 }
