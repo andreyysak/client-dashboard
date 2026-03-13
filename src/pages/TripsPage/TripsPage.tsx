@@ -22,10 +22,32 @@ import {
 } from '@tanstack/react-table'
 import excelIco from '@/assets/icons/excel.svg';
 import pdfIco from '@/assets/icons/pdf.svg';
+import { TripForm } from '@/pages/TripsPage/ui/TripForm.tsx'
 
 export const TripsPage = () => {
   const { t } = useTranslation()
-  const {view, setView, perPage, setPerPage, pageIndex, setPageIndex, columnVisibility, setColumnVisibility, openDropdown, setOpenDropDown, columnFilters, setColumnFilters, sorting, setSorting, globalFilter, setGlobalFilter} = useTripStore()
+  const {
+    view,
+    setView,
+    perPage,
+    setPerPage,
+    pageIndex,
+    setPageIndex,
+    columnVisibility,
+    setColumnVisibility,
+    openDropdown,
+    setOpenDropDown,
+    columnFilters,
+    setColumnFilters,
+    sorting,
+    setSorting,
+    globalFilter,
+    setGlobalFilter,
+    isFormOpen,
+    setFormOpen,
+    formType,
+    setFormType
+  } = useTripStore()
   const {trips, isLoading} = useTrips()
 
   const columns = useMemo(() => getTripColumns(t), [t])
@@ -65,6 +87,10 @@ export const TripsPage = () => {
 
   if (isLoading) {
     return <Loader />
+  }
+
+  if (isFormOpen) {
+    return <TripForm type={formType} />
   }
 
   return (
@@ -143,7 +169,10 @@ export const TripsPage = () => {
           <button className="trips__topbar__tools-icon">
             <img src={pdfIco} alt="pdf" />
           </button>
-          <button className="trips__topbar__tools-add">
+          <button onClick={() => {
+            setFormOpen(true)
+            setFormType('create')
+          }} className="trips__topbar__tools-add">
             <PlusIcon />
             {t('trips.add_btn')}
           </button>

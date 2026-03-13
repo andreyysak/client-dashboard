@@ -83,6 +83,19 @@
       "update_error": "Помилка при оновленні",
       "delete_success": "Поїздку видалено",
       "delete_error": "Не вдалося видалити поїздку"
+    },
+    "form": {
+      "label_create": "Створити поїздку",
+      "label_update": "Оновити поїздку",
+      "input_kilometres": "Введіть кілометраж",
+      "input_direction": "Введіть напрямок",
+      "btn_create": "Створити",
+      "btn_update": "Оновити",
+      "error_kilometres_min": "Має бути більше за 1",
+      "error_direction_min": "Мінімум 3 символи",
+      "success_create": "Поїздку успішно створено",
+      "success_delete": "Поїздку успішно видалено",
+      "success_update": "Поїздку успішно оновлено"
     }
   }
 }

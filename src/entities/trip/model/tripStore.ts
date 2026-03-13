@@ -6,6 +6,7 @@ import {
   Updater,
   SortingState,
 } from '@tanstack/react-table'
+import { Trip } from '@/entities/trip'
 
 type View = 'table' | 'cards'
 
@@ -14,6 +15,8 @@ interface TripState {
   error: boolean
   view: View
   isFormOpen: boolean
+  formType: 'create' | 'update'
+  currentTrip: Trip | null
   isChartOpen: boolean
   perPage: number
   pageIndex: number
@@ -27,6 +30,8 @@ interface TripState {
   setError: (value: boolean) => void
   setView: (view: View) => void
   setFormOpen: (value: boolean) => void
+  setFormType: (value: 'create' | 'update') => void
+  setCurrentTrip: (trip: Trip | null) => void
   setChartOpen: (value: boolean) => void
   setPerPage: (page: number) => void
   setPageIndex: (index: number) => void
@@ -44,6 +49,8 @@ export const useTripStore = create<TripState>()(
       error: false,
       view: 'table',
       isFormOpen: false,
+      formType: 'create',
+      currentTrip: null,
       isChartOpen: false,
       perPage: 7,
       pageIndex: 0,
@@ -57,6 +64,8 @@ export const useTripStore = create<TripState>()(
       setError: (error) => set({ error }),
       setView: (view) => set({ view }),
       setFormOpen: (isFormOpen) => set({ isFormOpen }),
+      setFormType: (formType) => set({ formType }),
+      setCurrentTrip: (currentTrip) => set({currentTrip}),
       setChartOpen: (isChartOpen) => set({ isChartOpen }),
       setPerPage: (perPage) => set({ perPage }),
       setPageIndex: (pageIndex) => set({ pageIndex }),

@@ -5,13 +5,14 @@ import { Trip } from '@/entities/trip/model/Trip.ts'
 import { ApiError } from '@/shared/types/ApiError'
 import { toast } from 'react-toastify'
 import { getErrorMessage } from '@/shared/api/axios.ts'
+import {t} from 'i18next'
 
 export const useTrips = () => {
   const queryClient = useQueryClient()
   const { setLoading, setError } = useTripStore()
 
   const tripsQuery = useQuery<Trip[], ApiError>({
-    queryKey: ['trips',],
+    queryKey: ['trips'],
     queryFn: async () => {
       setLoading(true)
       try {
@@ -36,7 +37,21 @@ export const useTrips = () => {
       TripApi.createTrip(variables.car_id, variables.kilometres, variables.direction),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['trips'] })
-      toast.success('Поїздку успішно додано')
+      toast.success(t('trips.form.success_create'))
+    },
+    onError: (e) => toast.error(getErrorMessage(e)),
+  })
+
+  const updateTripMutation = useMutation<
+    Trip,
+    ApiError,
+    { id: number; kilometres?: number; direction?: string }
+  >({
+    mutationFn: (variables) =>
+      TripApi.updateTrip(variables.id, variables.kilometres, variables.direction),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['trips'] })
+      toast.success(t('trips.form.success_update'))
     },
     onError: (e) => toast.error(getErrorMessage(e)),
   })
@@ -45,7 +60,7 @@ export const useTrips = () => {
     mutationFn: (id) => TripApi.deleteTrip(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['trips'] })
-      toast.success('Поїздку видалено')
+      toast.success(t('trips.form.success_delete'))
     },
     onError: (e) => toast.error(getErrorMessage(e)),
   })
@@ -56,7 +71,9 @@ export const useTrips = () => {
     isFetching: tripsQuery.isFetching,
     isError: tripsQuery.isError,
     createTrip: createTripMutation.mutateAsync,
+    updateTrip: updateTripMutation.mutateAsync,
     deleteTrip: deleteTripMutation.mutateAsync,
+    isUpdating: updateTripMutation.isPending,
     isDeleting: deleteTripMutation.isPending,
   }
 }

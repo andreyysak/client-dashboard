@@ -83,6 +83,19 @@
       "update_error": "Failed to update trip",
       "delete_success": "Trip deleted",
       "delete_error": "Could not delete trip"
+    },
+    "form": {
+      "label_create": "Create new trip",
+      "label_update": "Update trip",
+      "input_kilometres": "Enter kilometres",
+      "input_direction": "Enter direction",
+      "btn_create": "Create",
+      "btn_update": "Update",
+      "error_kilometres_min": "Kilometres must be at least 1",
+      "error_direction_min": "Direction must be at least 3 characters",
+      "success_create": "Trip was create successfully",
+      "success_delete": "Trip was delete successfully",
+      "success_update": "Trip was update successfully"
     }
   }
 }
