@@ -56,7 +56,7 @@
       "fuel": "Пальне",
       "color": "Колір",
       "unit_km": "км",
-      "selected_success": "chosen successful"
+      "selected_success": "успішно обрано"
     },
     "features": {
       "stage1": "Stage 1",
@@ -97,5 +97,10 @@
       "success_delete": "Поїздку успішно видалено",
       "success_update": "Поїздку успішно оновлено"
     }
+  },
+  "cinema": {
+    "btn_watch_later": "Дивитись пізніше",
+    "btn_more_info": "більше інформації",
+    "search_placeholder": "шукайте за назвою"
   }
 }

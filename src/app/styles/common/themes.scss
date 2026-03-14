@@ -7,6 +7,7 @@
   --text-main: #{$color-dark-500};
   --text-secondary: #{$color-dark-100};
   --text-muted: #{$color-sys-light-gray-60};
+  --text-contrast: #{$color-light-500};
 
   --border-color: #{$color-light-300};
   --border-focus: #{$color-sys-light-blue-70};
@@ -35,6 +36,7 @@
   --text-main: #{$color-light-100};
   --text-secondary: #{$color-sys-dark-gray-50};
   --text-muted: #{$color-dark-100};
+  --text-contrast: #{$color-dark-500};
 
   --border-color: #{$color-dark-200};
   --border-focus: #{$color-sys-dark-blue-50};

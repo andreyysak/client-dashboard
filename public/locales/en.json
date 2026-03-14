@@ -97,5 +97,10 @@
       "success_delete": "Trip was delete successfully",
       "success_update": "Trip was update successfully"
     }
+  },
+  "cinema": {
+    "btn_watch_later": "watch later",
+    "btn_more_info": "more info",
+    "search_placeholder": "search by title"
   }
 }
