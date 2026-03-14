@@ -9,6 +9,9 @@ import { MovieUpcoming } from '@/entities/movies/model/MovieUpcoming.ts'
 import { MovieSearch } from '@/entities/movies/model/MovieSearch.ts'
 import { MovieSearchById } from '@/entities/movies/model/MovieSearchById.ts'
 import { MovieCastMember } from '@/entities/movies/model/MovieCastMember.ts'
+import { MovieFavorite } from '@/entities/movies/model/MovieFavorite.ts'
+import { MovieWatched } from '@/entities/movies/model/MovieWatched.ts'
+import { MovieWatchLater } from '@/entities/movies/model/MovieWatchLater.ts'
 
 export const useMovies = (movieId?: number, searchQuery?: string) => {
   const queryClient = useQueryClient()
@@ -50,10 +53,46 @@ export const useMovies = (movieId?: number, searchQuery?: string) => {
     enabled: !!movieId,
   })
 
+  const movieFavorites = useQuery<MovieFavorite[], ApiError>({
+    queryKey: ['movie-favorites'],
+    queryFn: () => MovieApi.getFavoritesMovies(),
+    placeholderData: (previousData) => previousData,
+  })
+
+  const favoritesCount = useQuery<MovieFavorite[], ApiError, number>({
+    queryKey: ['movie-favorites'],
+    queryFn: () => MovieApi.getFavoritesMovies(),
+    select: (data) => data.length,
+  })
+
+  const movieWatched = useQuery<MovieWatched[], ApiError>({
+    queryKey: ['movie-watched'],
+    queryFn: () => MovieApi.getWatchedMovies(),
+    placeholderData: (previousData) => previousData,
+  })
+
+  const watchedCount = useQuery<MovieWatched[], ApiError, number>({
+    queryKey: ['movie-watched'],
+    queryFn: () => MovieApi.getWatchedMovies(),
+    select: (data) => data.length,
+  })
+
+  const movieWatchLater = useQuery<MovieWatchLater[], ApiError>({
+    queryKey: ['movie-watch-later'],
+    queryFn: () => MovieApi.getWatchLaterMovies(),
+    placeholderData: (previousData) => previousData,
+  })
+
+  const watchLaterCount = useQuery<MovieWatchLater[], ApiError, number>({
+    queryKey: ['movie-watch-later'],
+    queryFn: () => MovieApi.getWatchLaterMovies(),
+    select: (data) => data.length,
+  })
+
   const favoriteMutation = useMutation({
     mutationFn: (id: number) => MovieApi.toggleFavoriteMovie(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['movie-favorite'] })
+      queryClient.invalidateQueries({ queryKey: ['movie-favorites'] })
     },
     onError: (error) => {
       toast.error(getErrorMessage(error))
@@ -87,6 +126,12 @@ export const useMovies = (movieId?: number, searchQuery?: string) => {
     moviesByTitle,
     movieDetails,
     movieCredits,
+    movieFavorites,
+    favoritesCount: favoritesCount.data ?? 0,
+    movieWatched,
+    watchedCount: watchedCount.data ?? 0,
+    movieWatchLater,
+    watchLaterCount: watchLaterCount.data ?? 0,
     toggleFavorite: favoriteMutation.mutate,
     toggleWatched: watchedMutation.mutate,
     toggleWatchLater: watchLaterMutation.mutate,

@@ -15,8 +15,14 @@ const getRatingClass = (vote: number) => {
 }
 
 export const CinemaPage = () => {
-  const {t} = useTranslation()
-  const { moviesTrending, toggleWatchLater } = useMovies()
+  const { t } = useTranslation()
+  const {
+    moviesTrending,
+    toggleWatchLater,
+    favoritesCount,
+    watchedCount,
+    watchLaterCount,
+  } = useMovies()
 
   useEffect(() => {
     if (moviesTrending.isError) {
@@ -42,18 +48,27 @@ export const CinemaPage = () => {
         <nav className="cinema__topbar_navbar">
           <ul>
             <li>
-              <Link to="/favorites">
+              <Link to="/favorites" className="cinema__topbar-link">
                 <Heart />
+                {favoritesCount > 0 && (
+                  <span className="cinema__topbar-badge">{favoritesCount}</span>
+                )}
               </Link>
             </li>
             <li>
-              <Link to="/watched">
+              <Link to="/watched" className="cinema__topbar-link">
                 <Eye />
+                {watchedCount > 0 && (
+                  <span className="cinema__topbar-badge">{watchedCount}</span>
+                )}
               </Link>
             </li>
             <li>
-              <Link to="/watch-later">
+              <Link to="/watch-later" className="cinema__topbar-link">
                 <Clock />
+                {watchLaterCount > 0 && (
+                  <span className="cinema__topbar-badge">{watchLaterCount}</span>
+                )}
               </Link>
             </li>
           </ul>
@@ -90,7 +105,10 @@ export const CinemaPage = () => {
                   </div>
                   <p className="cinema__slide-overview">{movie.overview}</p>
                   <div className="cinema__slide-actions">
-                    <button onClick={() => toggleWatchLater(movie.id)} className="cinema__slide-btn cinema__slide-btn--primary">
+                    <button
+                      onClick={() => toggleWatchLater(movie.id)}
+                      className="cinema__slide-btn cinema__slide-btn--primary"
+                    >
                       <Plus size={18} />
                       {t('cinema.btn_watch_later')}
                     </button>

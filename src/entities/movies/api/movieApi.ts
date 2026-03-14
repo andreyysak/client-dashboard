@@ -5,6 +5,9 @@ import { MovieUpcoming } from '@/entities/movies/model/MovieUpcoming.ts'
 import { MovieSearch } from '@/entities/movies/model/MovieSearch.ts'
 import { MovieSearchById } from '@/entities/movies/model/MovieSearchById.ts'
 import { MovieCastMember } from '@/entities/movies/model/MovieCastMember.ts'
+import { MovieFavorite } from '@/entities/movies/model/MovieFavorite.ts'
+import { MovieWatched } from '@/entities/movies/model/MovieWatched.ts'
+import { MovieWatchLater } from '@/entities/movies/model/MovieWatchLater.ts'
 
 export const MovieApi = {
   async getTrendingMovies(): Promise<MovieTrending[]> {
@@ -29,6 +32,18 @@ export const MovieApi = {
   },
   async getMovieCastMember(id: number): Promise<MovieCastMember[]> {
     const response = await api<MovieCastMember[]>(`/movies/tmdb-credits/${id}`)
+    return response.data
+  },
+  async getFavoritesMovies(): Promise<MovieFavorite[]> {
+    const response = await api<MovieFavorite[]>('/movies/favorites')
+    return response.data
+  },
+  async getWatchedMovies(): Promise<MovieWatched[]> {
+    const response = await api<MovieWatched[]>('/movies/watched')
+    return response.data
+  },
+  async getWatchLaterMovies(): Promise<MovieWatchLater[]> {
+    const response = await api<MovieWatchLater[]>('/movies/watch-later')
     return response.data
   },
   async toggleFavoriteMovie(id: number): Promise<void> {
