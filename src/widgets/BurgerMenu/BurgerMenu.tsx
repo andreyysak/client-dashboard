@@ -2,11 +2,19 @@ import { useState } from 'react'
 import { navLinks } from '@/shared/consts/NavLinks.tsx'
 import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next'
-import { Bolt, Globe, Moon, User, ChevronDown } from 'lucide-react'
+import { Bolt, Globe, Moon, User, ChevronDown, Sun } from 'lucide-react'
+import { useAppStore } from '@/app/store/useAppStore.ts'
 
 export const BurgerMenu = () => {
   const { t } = useTranslation()
   const [expandedLinks, setExpandedLinks] = useState<string[]>([])
+
+  const { language, setLanguage, theme, toggleTheme } =
+    useAppStore()
+
+  const handleToggleLanguage = () => {
+    setLanguage(language === 'ua' ? 'en' : 'ua')
+  }
 
   const toggleExpand = (path: string, e: React.MouseEvent) => {
     if (navLinks.find((link) => link.path === path)?.subLinks) {
@@ -61,11 +69,14 @@ export const BurgerMenu = () => {
 
       <div className="burger-menu__bottom">
         <div className="burger-menu__bottom__controls">
-          <button className="burger-menu__bottom__controls--item">
+          <button
+            onClick={handleToggleLanguage}
+            className="burger-menu__bottom__controls--item"
+          >
             <Globe />
           </button>
-          <button className="burger-menu__bottom__controls--item">
-            <Moon />
+          <button onClick={toggleTheme} className="burger-menu__bottom__controls--item">
+            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </button>
           <button className="burger-menu__bottom__controls--item">
             <Link to="/settings">
