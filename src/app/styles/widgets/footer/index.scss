@@ -3,14 +3,12 @@
 @use "../../common/themes" as *;
 
 .footer {
-  position: fixed;
+  flex-shrink: 0;
   @include container;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   height: auto;
   min-height: 80px;
-  padding: 15px $padding-desktop;
+  padding: 20px $padding-desktop;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -92,8 +90,7 @@
 
 @media (max-width: $breakpoint-tablet-max) {
   .footer {
-    padding: 15px $padding-tablet;
-
+    padding-inline: $padding-tablet;
     &__copyright {
       display: none;
     }
@@ -102,11 +99,11 @@
 
 @media (max-width: $breakpoint-mobile-max) {
   .footer {
-    padding: $padding-mobile;
     flex-direction: column;
     gap: 15px;
     height: auto;
     text-align: center;
+    padding: 20px $padding-mobile;
 
     &__currency {
       flex-direction: row;

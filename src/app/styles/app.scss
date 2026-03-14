@@ -1,19 +1,29 @@
 @use "common/variables" as *;
 @use "common/mixins" as *;
 
-body {
-  background-color: var(--bg-page);
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   @include container;
 
-  @media (max-width: $breakpoint-desktop-sm-max) {
-    padding-bottom: 80px;
+  &__content {
+    flex: 1 0 auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
   }
+}
 
-  @media (max-width: $breakpoint-tablet-max) {
-    padding-bottom: 80px;
-  }
-
-  @media (max-width: $breakpoint-mobile-max) {
-    padding-bottom: 160px;
-  }
+body {
+  background-color: var(--bg-page);
+  color: var(--text-main);
 }

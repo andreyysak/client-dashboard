@@ -4,14 +4,14 @@ import Footer from '@/widgets/Footer'
 
 export const MainLayout = () => {
   return (
-    <main>
+    <div className="layout">
       <Header />
 
-      <div>
+      <div className="layout__content">
         <Outlet />
       </div>
 
       <Footer />
-    </main>
+    </div>
   )
 }
