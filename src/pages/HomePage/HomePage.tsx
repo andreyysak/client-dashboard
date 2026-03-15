@@ -4,7 +4,7 @@ export const HomePage = () => {
   const { t } = useTranslation('home')
   return (
     <div>
-      <h2>{t('title')}</h2>
+      <h2>{t('home.title')}</h2>
     </div>
   )
 }
