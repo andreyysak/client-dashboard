@@ -101,6 +101,7 @@
   "cinema": {
     "btn_watch_later": "watch later",
     "btn_more_info": "more info",
-    "search_placeholder": "search by title"
+    "search_placeholder": "search by title",
+    "search_result": "All searching results"
   }
 }

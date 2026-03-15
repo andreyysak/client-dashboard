@@ -23,7 +23,7 @@ export const MovieApi = {
     return response.data
   },
   async getMoviesByTitleFromTMDB(query: string): Promise<MovieSearch[]> {
-    const response = await api<MovieSearch[]>(`/movies/discovery/search?query=${query}`)
+    const response = await api<MovieSearch[]>(`/movies/search?query=${query}`)
     return response.data
   },
   async getMovieByIdFromTMDB(id: number): Promise<MovieSearchById> {

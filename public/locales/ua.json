@@ -101,6 +101,7 @@
   "cinema": {
     "btn_watch_later": "Дивитись пізніше",
     "btn_more_info": "більше інформації",
-    "search_placeholder": "шукайте за назвою"
+    "search_placeholder": "шукайте за назвою",
+    "search_result": "Усі результати пошуку"
   }
 }
