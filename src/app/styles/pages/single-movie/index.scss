@@ -1,4 +1,349 @@
-@use '../../common/variables' as *;
-@use '../../common/typography' as *;
-@use '../../common/mixins' as *;
-@use '../../common/themes' as *;
+@use "../../common/themes" as *;
+@use "../../common/variables" as *;
+
+.movie {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__hero {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    margin-bottom: $margin-desktop;
+  }
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 100%);
+      z-index: 1;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    padding: 40px 60px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__poster {
+    width: 100%;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  &__title {
+    font-size: 42px;
+    font-weight: $font-weight-bold;
+    margin: 0 0 8px 0;
+    line-height: 1.1;
+
+    .movie__year {
+      font-weight: $font-weight-regular;
+      opacity: 0.8;
+    }
+  }
+
+  &__facts {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: $font-size-body-1;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  &__fact-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__fact-separator {
+    opacity: 0.5;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  &__score {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px 16px;
+    border-radius: $border-radius-lg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+
+    svg {
+      color: var(--color-warning);
+    }
+
+    &-text {
+      display: flex;
+      flex-direction: column;
+
+      span {
+        font-size: 24px;
+        font-weight: $font-weight-bold;
+        line-height: 1;
+      }
+
+      small {
+        font-size: $font-size-caption;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__tagline {
+    font-size: $font-size-h6;
+    font-style: italic;
+    opacity: 0.7;
+    margin: 0 0 16px 0;
+  }
+
+  &__overview {
+    margin-bottom: 32px;
+
+    h3 {
+      font-size: $font-size-h5;
+      font-weight: $font-weight-semibold;
+      margin: 0 0 12px 0;
+    }
+
+    p {
+      font-size: $font-size-body-1;
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  &__crew {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+
+    &-member {
+      display: flex;
+      flex-direction: column;
+
+      strong {
+        font-size: $font-size-body-1;
+        font-weight: $font-weight-bold;
+      }
+
+      span {
+        font-size: $font-size-body-2;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__main {
+    padding: 0 20px;
+    margin-bottom: $margin-desktop;
+  }
+
+  &__cast {
+    h3 {
+      font-size: $font-size-h4;
+      font-weight: $font-weight-bold;
+      color: var(--text-main);
+      margin: 0 0 24px 0;
+    }
+
+    &-swiper {
+      padding-bottom: 12px;
+    }
+
+    &-slide {
+      width: 140px;
+    }
+
+    &-card {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: $border-radius-lg;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    &-image {
+      width: 100%;
+      height: 175px;
+      background-color: var(--bg-page);
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: var(--border-color);
+    }
+
+    &-info {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      strong {
+        font-size: $font-size-body-2;
+        color: var(--text-main);
+        line-height: 1.2;
+      }
+
+      span {
+        font-size: $font-size-caption;
+        color: var(--text-muted);
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop-lg-min) {
+  .movie {
+    &__content {
+      padding: 40px;
+      gap: 30px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .movie {
+    &__hero {
+      border-radius: 0;
+    }
+
+    &__content {
+      grid-template-columns: 250px 1fr;
+      padding: 30px 20px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .movie {
+    &__background {
+      &::after {
+        background: rgba(0, 0, 0, 0.8);
+      }
+    }
+
+    &__content {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    &__poster {
+      width: 200px;
+    }
+
+    &__facts {
+      justify-content: center;
+    }
+
+    &__actions {
+      justify-content: center;
+    }
+
+    &__crew {
+      grid-template-columns: repeat(2, 1fr);
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .movie {
+    &__content {
+      padding: 20px 16px;
+    }
+
+    &__poster {
+      width: 160px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__facts {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__fact-separator {
+      display: none;
+    }
+
+    &__overview {
+      h3 {
+        font-size: $font-size-h6;
+      }
+    }
+
+    &__main {
+      padding: 0 16px;
+    }
+  }
+}
