@@ -150,3 +150,110 @@
     }
   }
 }
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .cinema {
+    &__hero,
+    &__slide {
+      height: 480px;
+      max-height: 480px;
+    }
+
+    &__slide {
+      &-content {
+        max-width: 550px;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .cinema {
+    &__hero,
+    &__slide {
+      height: 400px;
+      max-height: 400px;
+    }
+
+    &__slide {
+      &-content {
+        left: 24px;
+        bottom: 24px;
+        right: 24px;
+        max-width: 100%;
+        gap: 12px;
+      }
+
+      &-title {
+        font-size: $font-size-h4;
+      }
+
+      &-overview {
+        font-size: $font-size-body-2;
+        -webkit-line-clamp: 2;
+      }
+
+      &-actions {
+        gap: 12px;
+      }
+
+      &-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .cinema {
+    &__hero {
+      border-radius: $border-radius-lg;
+    }
+
+    &__hero,
+    &__slide {
+      height: 360px;
+      max-height: 360px;
+    }
+
+    &__slide {
+      &-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        gap: 8px;
+      }
+
+      &-title {
+        font-size: $font-size-h5;
+      }
+
+      &-overview {
+        font-size: $font-size-caption;
+      }
+
+      &-vote {
+        padding: 2px 8px;
+        font-size: 10px;
+      }
+
+      &-actions {
+        margin-top: 4px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      &-btn {
+        padding: 8px 16px;
+        justify-content: center;
+      }
+    }
+  }
+}

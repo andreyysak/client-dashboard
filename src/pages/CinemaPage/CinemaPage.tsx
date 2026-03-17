@@ -15,10 +15,7 @@ const getRatingClass = (vote: number) => {
 
 export const CinemaPage = () => {
   const { t } = useTranslation()
-  const {
-    moviesTrending,
-    toggleWatchLater,
-  } = useMovies()
+  const { moviesTrending, toggleWatchLater } = useMovies()
 
   useEffect(() => {
     if (moviesTrending.isError) {
