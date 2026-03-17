@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import { Autoplay } from 'swiper/modules'
 import { Info, Plus } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router'
+import { AppRoutes } from '@/shared/consts/AppRoutes.ts'
 
 const getRatingClass = (vote: number) => {
   if (vote >= 7) return 'high'
@@ -72,7 +74,9 @@ export const CinemaPage = () => {
                     </button>
                     <button className="cinema__slide-btn cinema__slide-btn--secondary">
                       <Info size={18} />
-                      {t('cinema.btn_more_info')}
+                      <Link to={`${AppRoutes.CINEMA.ROOT}/${AppRoutes.CINEMA.MOVIE.replace(":id", String(movie.id))}`}>
+                        {t('cinema.btn_more_info')}
+                      </Link>
                     </button>
                   </div>
                 </div>

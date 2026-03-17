@@ -25,6 +25,7 @@ export const AppRoutes = {
     ROOT: '/cinema',
     MOVIES: 'movies',
     TV_SHOWS: 'tv_shows',
+    MOVIE: 'movie/:id',
   },
 
   GYM: '/gym',

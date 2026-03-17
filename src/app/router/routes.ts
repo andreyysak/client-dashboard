@@ -24,6 +24,7 @@ import GymPage from '@/pages/GymPage'
 import NotFoundPage from '@/pages/NotFoundPage'
 import CarPage from '@/pages/CarPage'
 import Loader from '@/widgets/Loader'
+import SingleMoviePage from '@/pages/SingleMoviePage'
 
 export const router = createBrowserRouter([
   {
@@ -134,6 +135,11 @@ export const router = createBrowserRouter([
                 path: AppRoutes.CINEMA.TV_SHOWS,
                 loader: Loader,
                 Component: TvShowPage,
+              },
+              {
+                path: AppRoutes.CINEMA.MOVIE,
+                loader: Loader,
+                Component: SingleMoviePage,
               },
             ],
           },

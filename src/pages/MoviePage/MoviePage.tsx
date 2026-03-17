@@ -6,6 +6,7 @@ import { useDebounce } from '@/shared/hooks/useDebounce.ts'
 import { useMovies } from '@/entities/movies/api/movieQuery.ts'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import { AppRoutes } from '@/shared/consts/AppRoutes.ts'
 
 const getRatingClass = (vote: number) => {
   if (vote >= 7) return 'high'
@@ -143,7 +144,10 @@ export const MoviePage = () => {
         >
           {moviesTrending.data.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <Link to={'#'} className="movies__swiper-slide">
+              <Link
+                to={`${AppRoutes.CINEMA.ROOT}/${AppRoutes.CINEMA.MOVIE.replace(':id', String(movie.id))}`}
+                className="movies__swiper-slide"
+              >
                 <div className="movies__swiper-image">
                   <img
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -183,7 +187,10 @@ export const MoviePage = () => {
         >
           {moviesPopular.data.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <Link to={'#'} className="movies__swiper-slide">
+              <Link
+                to={`${AppRoutes.CINEMA.ROOT}/${AppRoutes.CINEMA.MOVIE.replace(':id', String(movie.id))}`}
+                className="movies__swiper-slide"
+              >
                 <div className="movies__swiper-image">
                   <img
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -223,7 +230,10 @@ export const MoviePage = () => {
         >
           {moviesUpcoming.data.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <Link to={'#'} className="movies__swiper-slide">
+              <Link
+                to={`${AppRoutes.CINEMA.ROOT}/${AppRoutes.CINEMA.MOVIE.replace(':id', String(movie.id))}`}
+                className="movies__swiper-slide"
+              >
                 <div className="movies__swiper-image">
                   <img
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
