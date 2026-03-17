@@ -1,10 +1,15 @@
 @use "../../common/variables" as *;
-@use "../../common/mixins" as *;
 
 .breadcrumbs {
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
+  margin-bottom: $margin-desktop;
+  margin-left: 24px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__list {
     display: flex;
@@ -12,8 +17,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    flex-wrap: wrap;
     gap: 8px;
+    white-space: nowrap;
   }
 
   &__item {
@@ -25,46 +30,104 @@
   &__link {
     display: flex;
     align-items: center;
+    justify-content: center;
     color: var(--text-muted);
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: $transition-base;
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-medium;
+    padding: 6px 10px;
+    border-radius: $border-radius-sm;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: transparent;
 
-    &:hover {
+    &--home {
+      padding: 6px;
+      border-radius: 50%;
+
+      svg {
+        margin: 0;
+      }
+    }
+
+    &:hover, &:focus-visible {
       color: var(--color-info);
+      background-color: color-mix(in srgb, var(--color-info), transparent 90%);
+      outline: none;
 
       svg {
         color: var(--color-info);
+        transform: scale(1.1);
       }
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
 
     svg {
       color: var(--text-muted);
-      transition: color 0.2s ease;
+      transition: all 0.2s ease;
     }
   }
 
   &__separator {
-    color: var(--border-color);
+    color: color-mix(in srgb, var(--border-color), var(--text-muted) 30%);
     flex-shrink: 0;
+    opacity: 0.7;
   }
 
   &__current {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-main);
-    background: var(--bg-card);
-    padding: 2px 8px;
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    color: var(--color-info);
+    background-color: color-mix(in srgb, var(--color-info), transparent 90%);
+    padding: 6px 12px;
     border-radius: $border-radius-sm;
-    border: 1px solid var(--border-color);
+    border: 1px solid color-mix(in srgb, var(--color-info), transparent 80%);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-info), transparent 90%);
+    display: inline-block;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: $breakpoint-desktop-sm-max) {
+  .breadcrumbs {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .breadcrumbs {
+    margin-bottom: $margin-tablet;
+    margin-left: 0;
+
+    mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 90%, transparent 100%);
+    padding-right: 24px;
   }
 }
 
 @media (max-width: $breakpoint-mobile-max) {
   .breadcrumbs {
-    &__link, &__current {
-      font-size: 12px;
+    margin-bottom: $margin-mobile;
+    margin-left: 0;
+
+    &__link {
+      font-size: $font-size-caption;
+      padding: 4px 8px;
+    }
+
+    &__current {
+      font-size: $font-size-caption;
+      padding: 4px 10px;
+    }
+
+    &__item {
+      gap: 4px;
+    }
+
+    &__list {
+      gap: 4px;
     }
   }
 }
