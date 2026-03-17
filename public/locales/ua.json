@@ -102,6 +102,9 @@
     "btn_watch_later": "Дивитись пізніше",
     "btn_more_info": "більше інформації",
     "search_placeholder": "шукайте за назвою",
-    "search_result": "Усі результати пошуку"
+    "search_result": "Усі результати пошуку",
+    "trending_title": "В тренді",
+    "popular_title": "Популярні фільми",
+    "upcoming_title": "Скоро в прокаті"
   }
 }

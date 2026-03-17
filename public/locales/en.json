@@ -102,6 +102,9 @@
     "btn_watch_later": "watch later",
     "btn_more_info": "more info",
     "search_placeholder": "search by title",
-    "search_result": "All searching results"
+    "search_result": "All searching results",
+    "trending_title": "Trending movies",
+    "popular_title": "Popular movies",
+    "upcoming_title": "Upcoming movies"
   }
 }

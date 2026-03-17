@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom' // Додано імпорт
+import { Link } from 'react-router-dom'
 import { Clock, Eye, Heart, Search, X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useMoviesStore } from '@/entities/movies/model/movieStore.ts'
 import { useDebounce } from '@/shared/hooks/useDebounce.ts'
 import { useMovies } from '@/entities/movies/api/movieQuery.ts'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 
 const getRatingClass = (vote: number) => {
   if (vote >= 7) return 'high'
@@ -16,13 +18,22 @@ export const MoviePage = () => {
   const { searchQuery, setSearchQuery } = useMoviesStore()
   const debounceSearch = useDebounce(searchQuery, 500)
 
-  const { favoritesCount, watchedCount, watchLaterCount, moviesByTitle } = useMovies(
-    undefined,
-    debounceSearch,
-  )
+  const {
+    favoritesCount,
+    watchedCount,
+    watchLaterCount,
+    moviesByTitle,
+    moviesTrending,
+    moviesPopular,
+    moviesUpcoming,
+  } = useMovies(undefined, debounceSearch)
+
+  if (!moviesTrending.data || !moviesPopular.data || !moviesUpcoming.data) {
+    return null
+  }
 
   return (
-    <div className="movie">
+    <div className="movies">
       <div className="movies__topbar">
         <div className="movies__topbar-input">
           <Search />
@@ -69,7 +80,6 @@ export const MoviePage = () => {
           </ul>
         </nav>
 
-        {/* Результати пошуку тепер всередині топбару або відразу під ним */}
         {searchQuery && (
           <div className="movies__results">
             {moviesByTitle.isFetching ? (
@@ -112,6 +122,126 @@ export const MoviePage = () => {
             )}
           </div>
         )}
+      </div>
+
+      <div className="movies__swiper">
+        <h3>{t('cinema.trending_title')}</h3>
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          slidesPerView={4}
+          spaceBetween={30}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.5, spaceBetween: 16 },
+            480: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 4, spaceBetween: 30 },
+          }}
+        >
+          {moviesTrending.data.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Link to={'#'} className="movies__swiper-slide">
+                <div className="movies__swiper-image">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    alt={movie.original_title}
+                  />
+                </div>
+                <div className="movies__swiper-content">
+                  <h6>{movie.title}</h6>
+                  <p>{movie.overview}</p>
+                  <div>
+                    <p>{movie.release_date}</p>
+                    <p>{movie.vote_average}</p>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="movies__swiper">
+        <h3>{t('cinema.popular_title')}</h3>
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          slidesPerView={4}
+          spaceBetween={30}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.5, spaceBetween: 16 },
+            480: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 4, spaceBetween: 30 },
+          }}
+        >
+          {moviesPopular.data.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Link to={'#'} className="movies__swiper-slide">
+                <div className="movies__swiper-image">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    alt={movie.original_title}
+                  />
+                </div>
+                <div className="movies__swiper-content">
+                  <h6>{movie.title}</h6>
+                  <p>{movie.overview}</p>
+                  <div>
+                    <p>{movie.release_date}</p>
+                    <p>{movie.vote_average}</p>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="movies__swiper">
+        <h3>{t('cinema.upcoming_title')}</h3>
+        <Swiper
+          modules={[Autoplay, Pagination, Navigation]}
+          slidesPerView={4}
+          spaceBetween={30}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1.5, spaceBetween: 16 },
+            480: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 24 },
+            1024: { slidesPerView: 4, spaceBetween: 30 },
+          }}
+        >
+          {moviesUpcoming.data.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Link to={'#'} className="movies__swiper-slide">
+                <div className="movies__swiper-image">
+                  <img
+                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                    alt={movie.original_title}
+                  />
+                </div>
+                <div className="movies__swiper-content">
+                  <h6>{movie.title}</h6>
+                  <p>{movie.overview}</p>
+                  <div>
+                    <p>{movie.release_date}</p>
+                    <p>{movie.vote_average}</p>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   )
