@@ -13,3 +13,10 @@ export interface MovieUpcoming {
   video: boolean
   vote_average: number
 }
+
+export interface MovieUpcomingResponse {
+  success: boolean
+  data: MovieUpcoming[]
+  statusCode: number
+  timestamp: string
+}

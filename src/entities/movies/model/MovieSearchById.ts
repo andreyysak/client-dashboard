@@ -73,3 +73,10 @@ export interface MovieSearchById {
     results: any[]
   }
 }
+
+export interface MovieSearchByIdResponse {
+  statusCode: number
+  success: boolean
+  data: MovieSearchById
+  timestamp: string
+}

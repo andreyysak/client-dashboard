@@ -14,3 +14,10 @@ export interface MovieSearch {
   vote_average: number
   vote_count: number
 }
+
+export interface MovieSearchResponse {
+  success: boolean
+  data: MovieSearch[]
+  statusCode: number
+  timestamp: string
+}

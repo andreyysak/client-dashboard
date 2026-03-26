@@ -4,3 +4,10 @@ export interface MovieFavorite {
   tmdb_id: number
   created_at: string
 }
+
+export interface MovieFavoritesResponse {
+  success: boolean
+  data: MovieFavorite[]
+  stausCode: number
+  timestamp: string
+}

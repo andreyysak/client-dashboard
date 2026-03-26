@@ -15,3 +15,10 @@ export interface MovieTrending {
   vote_average: number
   vote_count: number
 }
+
+export interface MovieTrendingResponse {
+  success: boolean
+  data: MovieTrending[]
+  statusCode: number
+  timestamp: string
+}

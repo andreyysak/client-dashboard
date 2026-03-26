@@ -26,6 +26,7 @@ declare global{
 	const NotFoundPage: typeof import('./src/pages/NotFoundPage/NotFoundPage')['NotFoundPage']
 	const ProfilePage: typeof import('./src/pages/ProfilePage/ProfilePage')['ProfilePage']
 	const SettingsPage: typeof import('./src/pages/SettingsPage/SettingsPage')['SettingsPage']
+	const SingleMoviePage: typeof import('./src/pages/SingleMoviePage/SingleMoviePage')['SingleMoviePage']
 	const TransactionPage: typeof import('./src/pages/TransactionPage/TransactionPage')['TransactionPage']
 	const TripsPage: typeof import('./src/pages/TripsPage/TripsPage')['TripsPage']
 	const TvShowPage: typeof import('./src/pages/TvShowPage/TvShowPage')['TvShowPage']

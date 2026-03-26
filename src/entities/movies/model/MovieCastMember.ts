@@ -12,3 +12,10 @@ export interface MovieCastMember {
   credit_id: string
   order: number
 }
+
+export interface MovieCastMemberResponse {
+  statusCode: number
+  data: MovieCastMember[]
+  success: boolean
+  timestamp: string
+}

@@ -16,3 +16,10 @@ export interface UpdateUserLocation {
   country?: string;
   city?: string;
 }
+
+export interface UserResponse {
+  data: User
+  success: boolean
+  statusCode: number
+  timestamp: string
+}

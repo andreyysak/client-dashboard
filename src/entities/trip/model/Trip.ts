@@ -11,3 +11,10 @@ export interface Trip {
   updated_at: string
   car: Garage
 }
+
+export interface TripResponse {
+  success: boolean
+  statusCode: number
+  data: Trip[]
+  timestamp: string
+}

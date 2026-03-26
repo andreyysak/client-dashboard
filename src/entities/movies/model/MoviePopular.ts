@@ -14,3 +14,10 @@ export interface MoviePopular {
   vote_average: number
   vote_count: number
 }
+
+export interface MoviePopularResponse {
+  success: boolean
+  data: MoviePopular[]
+  statusCode: number
+  timestamp: string
+}

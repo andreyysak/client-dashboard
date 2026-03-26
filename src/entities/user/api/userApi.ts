@@ -1,11 +1,11 @@
-import { UpdateUserLocation, User } from '@/entities/user/model/User'
+import { UpdateUserLocation, User, UserResponse } from '@/entities/user/model/User'
 import { api } from '@/shared/api/axios'
 
 export const UserApi = {
   async getUserInfo(): Promise<User> {
     try {
-      const { data } = await api.get<User>('/user/me')
-      return data
+      const { data } = await api.get<UserResponse>('/user/me')
+      return data.data
     } catch (error) {
       console.error('Failed to fetch user info:', error)
       throw error

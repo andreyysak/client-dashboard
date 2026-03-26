@@ -1,11 +1,12 @@
 import { Garage } from '@/entities/garage'
 import { api } from '@/shared/api/axios.ts'
+import { GarageResponse } from '@/entities/garage/model/Garage.ts'
 
 export const GarageApi = {
   async getAll(): Promise<Garage[]> {
     try {
-      const response = await api.get<Garage[]>('/cars')
-      return response.data || []
+      const response = await api.get<GarageResponse>('/cars')
+      return response.data.data
     } catch (error) {
       console.error('Failed to load:', error)
       throw error

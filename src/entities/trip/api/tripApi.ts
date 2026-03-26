@@ -1,10 +1,10 @@
-import { Trip } from '@/entities/trip/model/Trip.ts'
+import { Trip, TripResponse } from '@/entities/trip/model/Trip.ts'
 import { api } from '@/shared/api/axios.ts'
 
 export const TripApi = {
   async getTrips(): Promise<Trip[]> {
-    const response = await api.get<Trip[]>('/trips')
-    return response.data
+    const response = await api.get<TripResponse>('/trips')
+    return response.data.data
   },
 
   async getTripById(trip_id: number): Promise<Trip> {
