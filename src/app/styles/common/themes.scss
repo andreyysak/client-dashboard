@@ -27,6 +27,12 @@
   --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.05);
 
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  --card-filter: grayscale(100%) brightness(95%);
+  --card-opacity: 0.2;
+  --card-overlay: rgba(255, 255, 255, 0.8);
+  --card-hover-opacity: 0.8;
+  --card-blur: 8px;
 }
 
 [data-theme='dark'] {
@@ -54,4 +60,10 @@
 
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
+
+  --card-filter: grayscale(100%) brightness(20%);
+  --card-opacity: 0.6;
+  --card-overlay: rgba(0, 0, 0, 0.4);
+  --card-hover-opacity: 0.6;
+  --card-blur: 12px;
 }
