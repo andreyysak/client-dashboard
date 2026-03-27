@@ -112,7 +112,7 @@
         display: none;
       }
 
-      &.show {
+      &.ant-dropdown-open {
         transform: rotate(180deg);
       }
 
@@ -135,7 +135,7 @@
     }
 
     &__item {
-      padding: 0;
+      padding: 0 !important;
       background: transparent;
       border-radius: 8px;
       overflow: hidden;

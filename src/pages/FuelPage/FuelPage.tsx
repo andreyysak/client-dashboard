@@ -4,7 +4,30 @@ import { ChevronDown, Pen, Trash } from 'lucide-react'
 import { format } from 'date-fns'
 import { useAppStore } from '@/app/store/useAppStore.ts'
 import { getStationImage } from '@/shared/lib/getImageFuelStation.ts'
-import { Dropdown } from 'react-bootstrap'
+import { Dropdown } from 'antd'
+
+const getDropdownItems = (language: string) => [
+  {
+    key: 'delete',
+    className: 'fuel-card__item',
+    label: (
+      <div className="fuel-card__action fuel-card__action--delete">
+        <Trash />
+        <span>{language === 'ua' ? 'Видалити' : 'Delete'}</span>
+      </div>
+    ),
+  },
+  {
+    key: 'edit',
+    className: 'fuel-card__item',
+    label: (
+      <div className="fuel-card__action fuel-card__action--edit">
+        <Pen />
+        <span>{language === 'ua' ? 'Редагувати' : 'Edit'}</span>
+      </div>
+    ),
+  },
+]
 
 export const FuelPage = () => {
   const { fuels, isLoading } = useFuels()
@@ -14,8 +37,12 @@ export const FuelPage = () => {
     return <Loader />
   }
 
+  const dropdownItems = getDropdownItems(language)
+
   return (
     <div className="fuel">
+      <div className="fuel__tools"></div>
+
       <div className="fuel__list">
         {fuels.map((fuel) => (
           <div className="fuel-card" key={fuel.gas_id}>
@@ -31,26 +58,17 @@ export const FuelPage = () => {
                   {format(new Date(fuel.created_at), 'PP')}
                 </p>
 
-                <Dropdown drop='start' className="fuel-card__dropdown">
-                  <Dropdown.Toggle as="button" className="fuel-card__button">
-                    <ChevronDown />
-                  </Dropdown.Toggle>
-
-                  <Dropdown.Menu className="fuel-card__menu">
-                    <Dropdown.Item className="fuel-card__item">
-                      <button className="fuel-card__action fuel-card__action--delete">
-                        <Trash />
-                        <span>{language === 'ua' ? 'Видалити' : 'Delete'}</span>
-                      </button>
-                    </Dropdown.Item>
-                    <Dropdown.Item className="fuel-card__item">
-                      <button className="fuel-card__action fuel-card__action--edit">
-                        <Pen />
-                        <span>{language === 'ua' ? 'Редагувати' : 'Edit'}</span>
-                      </button>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <div className="fuel-card__dropdown">
+                  <Dropdown
+                    menu={{ items: dropdownItems, className: 'fuel-card__menu' }}
+                    trigger={['click']}
+                    placement="bottomRight"
+                  >
+                    <button className="fuel-card__button">
+                      <ChevronDown />
+                    </button>
+                  </Dropdown>
+                </div>
               </div>
 
               <div className="fuel-card__body">
