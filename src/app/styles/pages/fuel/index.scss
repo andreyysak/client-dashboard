@@ -668,3 +668,97 @@
     }
   }
 }
+
+@media (min-width: $breakpoint-desktop-lg-min) {
+  .fuel {
+    &__list {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+@media (max-width: $breakpoint-tablet-max) {
+  .fuel {
+    &__topbar {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+
+      &__left, &__right {
+        justify-content: center;
+      }
+    }
+
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+      row-gap: 32px;
+    }
+
+    &__table {
+      overflow-x: auto;
+
+      table {
+        min-width: 700px;
+      }
+    }
+
+    &-form {
+      max-width: 90%;
+      padding: 32px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-mobile-max) {
+  .fuel {
+    &__topbar {
+      padding: 16px;
+
+      &__left, &__right {
+        justify-content: space-between;
+      }
+    }
+
+    &__list {
+      grid-template-columns: 1fr;
+      row-gap: 24px;
+    }
+
+    &__show-more {
+      width: 100%;
+      margin-top: 32px;
+    }
+
+    &-card {
+      &__title {
+        font-size: 32px;
+      }
+    }
+
+    &-form {
+      padding: 24px 20px;
+
+      &__title {
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+
+      &__fields {
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      &__input {
+        padding: 10px 14px;
+      }
+    }
+
+    &-modal {
+      &__close {
+        top: 12px;
+        right: 12px;
+      }
+    }
+  }
+}
