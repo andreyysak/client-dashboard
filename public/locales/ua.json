@@ -106,5 +106,25 @@
     "trending_title": "В тренді",
     "popular_title": "Популярні фільми",
     "upcoming_title": "Скоро в прокаті"
+  },
+  "fuels": {
+    "liters": "л",
+    "price": "грн",
+    "delete_fuel": "Видалити дані",
+    "edit_fuel": "Змінити дані",
+    "add_fuel": "Новий запис",
+    "sort_dropdown": "Сортувати",
+    "most_liters": "Найбільше літрів",
+    "least_liters": "Найменше літрів",
+    "most_money": "Найдорожче",
+    "least_money": "Найдешевше",
+    "newest": "Нові",
+    "oldest": "Давні",
+    "col_id": "#",
+    "col_station": "АЗС",
+    "col_price": "Вартість",
+    "col_liters": "Літри",
+    "col_date": "Дата",
+    "col_actions": "Дії"
   }
 }

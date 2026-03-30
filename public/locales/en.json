@@ -106,5 +106,25 @@
     "trending_title": "Trending movies",
     "popular_title": "Popular movies",
     "upcoming_title": "Upcoming movies"
+  },
+  "fuels": {
+    "liters": "L",
+    "price": "UAH",
+    "delete_fuel": "Delete fuel",
+    "add_fuel": "New fuel",
+    "sort_dropdown": "Sort",
+    "edit_fuel": "Edit fuel",
+    "most_liters": "The most liters",
+    "least_liters": "At least liters",
+    "most_money": "The most money",
+    "least_money": "At least liters",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "col_id": "ID",
+    "col_station": "Fuel station",
+    "col_price": "Price",
+    "col_liters": "Liters",
+    "col_date": "Date",
+    "col_actions": "Actions"
   }
 }

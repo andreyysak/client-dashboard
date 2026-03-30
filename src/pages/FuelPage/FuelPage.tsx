@@ -1,93 +1,21 @@
-import { useFuels } from '@/entities/fuel/api/query.ts'
-import Loader from '@/widgets/Loader'
-import { ChevronDown, Pen, Trash } from 'lucide-react'
-import { format } from 'date-fns'
-import { useAppStore } from '@/app/store/useAppStore.ts'
-import { getStationImage } from '@/shared/lib/getImageFuelStation.ts'
-import { Dropdown } from 'antd'
-
-const getDropdownItems = (language: string) => [
-  {
-    key: 'delete',
-    className: 'fuel-card__item',
-    label: (
-      <div className="fuel-card__action fuel-card__action--delete">
-        <Trash />
-        <span>{language === 'ua' ? 'Видалити' : 'Delete'}</span>
-      </div>
-    ),
-  },
-  {
-    key: 'edit',
-    className: 'fuel-card__item',
-    label: (
-      <div className="fuel-card__action fuel-card__action--edit">
-        <Pen />
-        <span>{language === 'ua' ? 'Редагувати' : 'Edit'}</span>
-      </div>
-    ),
-  },
-]
+import {FuelTopBar} from "@/pages/FuelPage/ui/FuelTopBar.tsx";
+import {useFuelStore} from "@/entities/fuel/model/store.ts";
+import {FuelCardList} from "@/pages/FuelPage/ui/FuelCardList.tsx";
+import {FuelTable} from "@/pages/FuelPage/ui/FuelTable.tsx";
 
 export const FuelPage = () => {
-  const { fuels, isLoading } = useFuels()
-  const { language } = useAppStore()
-
-  if (isLoading) {
-    return <Loader />
-  }
-
-  const dropdownItems = getDropdownItems(language)
+    const {layout} = useFuelStore()
 
   return (
     <div className="fuel">
-      <div className="fuel__tools"></div>
 
-      <div className="fuel__list">
-        {fuels.map((fuel) => (
-          <div className="fuel-card" key={fuel.gas_id}>
-            <div className="fuel-card__background">
-              <img
-                src={getStationImage(fuel.station)}
-                alt={`${fuel.station} background`}
-              />
-            </div>
-            <div className="fuel-card__content">
-              <div className="fuel-card__header">
-                <p className="fuel-card__date">
-                  {format(new Date(fuel.created_at), 'PP')}
-                </p>
+        <FuelTopBar />
 
-                <div className="fuel-card__dropdown">
-                  <Dropdown
-                    menu={{ items: dropdownItems, className: 'fuel-card__menu' }}
-                    trigger={['click']}
-                    placement="bottomRight"
-                  >
-                    <button className="fuel-card__button">
-                      <ChevronDown />
-                    </button>
-                  </Dropdown>
-                </div>
-              </div>
-
-              <div className="fuel-card__body">
-                <h3 className="fuel-card__title">{fuel.station}</h3>
-                <div className="fuel-card__info">
-                  <p className="fuel-card__value">
-                    {fuel.liters}
-                    <span>{language === 'ua' ? ' л' : ' L'}</span>
-                  </p>
-                  <p className="fuel-card__value">
-                    {fuel.price}
-                    <span>{language === 'ua' ? ' грн' : ' UAH'}</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+        {
+            layout === 'cards'
+                ? <FuelCardList />
+                : <FuelTable />
+        }
     </div>
   )
 }
