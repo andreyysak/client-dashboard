@@ -129,6 +129,42 @@
     row-gap: 40px;
   }
 
+  &__show-more {
+    width: 220px;
+    height: 50px;
+    border: 2px solid var(--border-color);
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    margin-inline: auto;
+    margin-top: 50px;
+    border-radius: $border-radius-lg;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--btn-hover);
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:active {
+      background-color: var(--btn-active);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      transition: all 0.3s ease;
+    }
+  }
+
   &-card {
     padding: 20px;
     border: 2px solid var(--border-color);

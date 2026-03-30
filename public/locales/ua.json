@@ -110,6 +110,7 @@
   "fuels": {
     "liters": "л",
     "price": "грн",
+    "show_more": "Показати ще",
     "delete_fuel": "Видалити дані",
     "edit_fuel": "Змінити дані",
     "add_fuel": "Новий запис",

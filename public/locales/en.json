@@ -110,6 +110,7 @@
   "fuels": {
     "liters": "L",
     "price": "UAH",
+    "show_more": "Show more",
     "delete_fuel": "Delete fuel",
     "add_fuel": "New fuel",
     "sort_dropdown": "Sort",

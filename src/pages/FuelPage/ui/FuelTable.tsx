@@ -2,7 +2,9 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import { Fuel } from '@/entities/fuel/model/Fuel.ts'
@@ -16,7 +18,7 @@ export const FuelTable = () => {
   const { t } = useTranslation()
   const columnHelper = createColumnHelper<Fuel>()
   const { fuels, deleteFuel } = useFuels()
-  const { pageIndex, pageSize, setPageIndex, setFormData } = useFuelStore()
+  const { pageIndex, pageSize, setPageIndex, setFormData, setColumnVisibility, setColumnFilters, setSorting, columnFilters, columnVisibility, sorting } = useFuelStore()
 
   const defaultColumns = [
     columnHelper.accessor('gas_id', {
@@ -66,6 +68,8 @@ export const FuelTable = () => {
     data: fuels ?? [],
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     onPaginationChange: (updater) => {
       if (typeof updater === 'function') {
         const newState = updater({ pageIndex, pageSize })
@@ -79,7 +83,13 @@ export const FuelTable = () => {
         pageIndex,
         pageSize,
       },
+      columnVisibility,
+      columnFilters,
+      sorting,
     },
+    onColumnVisibilityChange: setColumnVisibility,
+    onColumnFiltersChange: setColumnFilters,
+    onSortingChange: setSorting,
   })
 
   return (
@@ -90,7 +100,7 @@ export const FuelTable = () => {
             return (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} colSpan={header.colSpan}>
+                  <th key={header.id} colSpan={header.colSpan} onClick={header.column.getToggleSortingHandler()} style={{cursor: 'pointer'}}>
                     {flexRender(header.column.columnDef.header, header.getContext())}
                   </th>
                 ))}
