@@ -6,7 +6,7 @@ import { useFuelStore } from '@/entities/fuel/model/store.ts'
 
 export const FuelTopBar = () => {
   const { t } = useTranslation()
-  const { layout, setLayout } = useFuelStore()
+  const { layout, setLayout, setFormData } = useFuelStore()
 
   const sortItems: MenuProps['items'] = [
     {
@@ -72,7 +72,7 @@ export const FuelTopBar = () => {
         )}
 
         <Tooltip title={t('fuels.add_fuel')}>
-          <Button shape="square" type="default" icon={<PlusIcon />} />
+          <Button onClick={() => setFormData({isOpen: true, type: 'post'})} shape="square" type="default" icon={<PlusIcon />} />
         </Tooltip>
       </div>
     </div>

@@ -125,6 +125,19 @@
     "col_price": "Вартість",
     "col_liters": "Літри",
     "col_date": "Дата",
-    "col_actions": "Дії"
+    "col_actions": "Дії",
+    "form_add_title": "Нова заправка",
+    "form_update_title": "Оновити заправку",
+    "form_station_label": "АЗС",
+    "form_price_label": "Ціна",
+    "form_liters_label": "Літри",
+    "form_station_placeholder": "Оберіть АЗК",
+    "form_price_placeholder": "Введіть суму",
+    "form_liters_placeholder": "Введіть літраж",
+    "form_submit_btn": "Надіслати",
+    "form_edit_btn": "Оновити",
+    "toast_success_create": "Запис про заправку був іспішно створений",
+    "toast_success_update": "Запис про заправку був іспішно оновлений",
+    "toast_error_update": "Помилка"
   }
 }

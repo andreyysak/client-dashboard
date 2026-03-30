@@ -12,7 +12,7 @@ export const FuelCardList = () => {
   return (
     <div className="fuel__list">
       {fuels.map((fuel) => (
-        <FuelCard fuel={fuel} />
+        <FuelCard key={fuel.gas_id} fuel={fuel} />
       ))}
     </div>
   )

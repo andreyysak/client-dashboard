@@ -15,8 +15,8 @@ import { useFuelStore } from '@/entities/fuel/model/store.ts'
 export const FuelTable = () => {
   const { t } = useTranslation()
   const columnHelper = createColumnHelper<Fuel>()
-  const { fuels } = useFuels()
-  const { pageIndex, pageSize, setPageIndex } = useFuelStore()
+  const { fuels, deleteFuel } = useFuels()
+  const { pageIndex, pageSize, setPageIndex, setFormData } = useFuelStore()
 
   const defaultColumns = [
     columnHelper.accessor('gas_id', {
@@ -42,12 +42,18 @@ export const FuelTable = () => {
     columnHelper.display({
       id: 'actions',
       header: t('fuels.col_actions'),
-      cell: () => (
+      cell: (info) => (
         <div className="fuel__table__actions">
-          <button className="fuel__table__btn fuel__table__btn-delete">
+          <button
+            onClick={() => deleteFuel(info.row.original.gas_id)}
+            className="fuel__table__btn fuel__table__btn-delete"
+          >
             <Trash />
           </button>
-          <button className="fuel__table__btn fuel__table__btn-edit">
+          <button
+            onClick={() => setFormData({ isOpen: true, type: 'patch', id: info.row.original.gas_id })}
+            className="fuel__table__btn fuel__table__btn-edit"
+          >
             <Pen />
           </button>
         </div>

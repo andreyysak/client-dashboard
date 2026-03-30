@@ -125,6 +125,19 @@
     "col_price": "Price",
     "col_liters": "Liters",
     "col_date": "Date",
-    "col_actions": "Actions"
+    "col_actions": "Actions",
+    "form_add_title": "New fuel",
+    "form_update_title": "Update fuel",
+    "form_station_label": "Fuel station",
+    "form_price_label": "Price",
+    "form_liters_label": "Liters",
+    "form_station_placeholder": "Enter fuel station",
+    "form_price_placeholder": "Enter price",
+    "form_liters_placeholder": "Enter liters",
+    "form_submit_btn": "Submit",
+    "form_edit_btn": "Update",
+    "toast_success_create": "Fuel was created successfully",
+    "toast_success_update": "Fuel was updated successfully",
+    "toast_error_update": "Error"
   }
 }
