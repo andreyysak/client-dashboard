@@ -93,6 +93,33 @@
       align-items: center;
       gap: 16px;
     }
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-card) !important;
+      border: 1px solid var(--border-color) !important;
+      color: var(--text-secondary) !important;
+      transition: all 0.3s ease !important;
+
+      &:hover,
+      &:focus {
+        background-color: var(--btn-hover) !important;
+        border-color: var(--color-accent) !important;
+        color: var(--color-accent) !important;
+
+        svg {
+          color: var(--color-accent);
+        }
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        transition: color 0.3s ease;
+      }
+    }
   }
 
   &__list {

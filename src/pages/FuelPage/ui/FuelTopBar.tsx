@@ -53,7 +53,7 @@ export const FuelTopBar = () => {
           </a>
         </Dropdown>
       </div>
-      
+
       <div className="fuel__topbar__right">
         {layout === 'cards' ? (
           <Button
@@ -61,6 +61,7 @@ export const FuelTopBar = () => {
             shape="square"
             type="default"
             icon={<Grid2X2 />}
+            className="fuel__topbar__btn"
           />
         ) : (
           <Button
@@ -68,11 +69,18 @@ export const FuelTopBar = () => {
             shape="square"
             type="default"
             icon={<Layout />}
+            className="fuel__topbar__btn"
           />
         )}
 
         <Tooltip title={t('fuels.add_fuel')}>
-          <Button onClick={() => setFormData({isOpen: true, type: 'post'})} shape="square" type="default" icon={<PlusIcon />} />
+          <Button
+            onClick={() => setFormData({ isOpen: true, type: 'post' })}
+            shape="square"
+            type="default"
+            icon={<PlusIcon />}
+            className="fuel__topbar__btn"
+          />
         </Tooltip>
       </div>
     </div>
