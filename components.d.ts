@@ -37,9 +37,11 @@ declare global{
 	const Loader: typeof import('./src/widgets/Loader/Loader')['Loader']
 	const Sidebar: typeof import('./src/widgets/Sidebar/Sidebar')['Sidebar']
 	const FuelCard: typeof import('./src/pages/FuelPage/ui/FuelCard')['FuelCard']
-	const FuelCardList: typeof import('./src/pages/FuelPage/ui/FuelCardList')['FuelCardList']
 	const FuelModal: typeof import('./src/pages/FuelPage/ui/FuelModal')['FuelModal']
 	const FuelTable: typeof import('./src/pages/FuelPage/ui/FuelTable')['FuelTable']
 	const FuelTopBar: typeof import('./src/pages/FuelPage/ui/FuelTopBar')['FuelTopBar']
+	const MaintenanceForm: typeof import('./src/pages/MaintenancePage/ui/MaintenanceForm')['MaintenanceForm']
+	const MaintenanceList: typeof import('./src/pages/MaintenancePage/ui/MaintenanceList')['MaintenanceList']
+	const MaintenanceListItem: typeof import('./src/pages/MaintenancePage/ui/MaintenanceListItem')['MaintenanceListItem']
 	const TripForm: typeof import('./src/pages/TripsPage/ui/TripForm')['TripForm']
 }

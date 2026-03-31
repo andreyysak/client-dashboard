@@ -140,5 +140,22 @@
     "toast_success_create": "Запис про заправку був іспішно створений",
     "toast_success_update": "Запис про заправку був іспішно оновлений",
     "toast_error_update": "Помилка"
+  },
+  "maintenance": {
+    "km": "км",
+    "no_cost": "Немає даних про вартість даного ТО",
+    "form_title_add": "Нове ТО",
+    "form_title_edit": "Оновити запис про ТО",
+    "form_btn_add": "Надіслати",
+    "form_btn_edit": "Оновити",
+    "form_odometer_label": "Одометр",
+    "form_odometer_placeholder": "Введіть значення одометра",
+    "form_description_label": "Тип ТО",
+    "form_description_placeholder": "Введіть тип ТО",
+    "form_cost_label": "Вартість ТО",
+    "form_cost_placeholder": "Введіть вартість даного ТО",
+    "form_error_odometer_min": "Значення одометра має бути більше за 1",
+    "form_error_description_min": "Опис має містити щонайменше 3 символи",
+    "form_error_no_car": "Автомобіль не обрано"
   }
 }

@@ -140,5 +140,22 @@
     "toast_success_create": "Fuel was created successfully",
     "toast_success_update": "Fuel was updated successfully",
     "toast_error_update": "Error"
+  },
+  "maintenance": {
+    "km": "km",
+    "no_cost": "No info about cost of this maintenance",
+    "form_title_add": "New maintenance",
+    "form_title_edit": "Update maintenance",
+    "form_btn_add": "Submit",
+    "form_btn_edit": "Update",
+    "form_odometer_label": "Odometer",
+    "form_odometer_placeholder": "Enter odometer value",
+    "form_description_label": "Maintenance type",
+    "form_description_placeholder": "Enter type of maintenance",
+    "form_cost_label": "Price value",
+    "form_cost_placeholder": "Enter cost of maintenance",
+    "form_error_odometer_min": "Odometer must be at least 1",
+    "form_error_description_min": "Description must be at least 3 characters",
+    "form_error_no_car": "No car selected"
   }
 }
