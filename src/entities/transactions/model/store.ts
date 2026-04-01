@@ -1,11 +1,12 @@
 import { create } from 'zustand'
+import { TransactionTab } from '@/entities/transactions/model/type.ts'
 
 interface TransactionState {
-  selectedTab: 'all' | 'manual' | 'bank'
-  setSelectedTab: (selectedTab: string) => void
+  selectedTab: TransactionTab
+  setSelectedTab: (selectedTab: TransactionTab) => void
 }
 
 export const useTransactionStore = create<TransactionState>((set) => ({
   selectedTab: 'all',
-  setSelectedTab: (selectedTab) => set({selectedTab})
+  setSelectedTab: (selectedTab) => set({ selectedTab }),
 }))

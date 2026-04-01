@@ -2,30 +2,32 @@ import { Button, Tabs } from 'antd'
 import { useTranslation } from 'react-i18next'
 import { useTransactionStore } from '@/entities/transactions/model/store.ts'
 import { Plus } from 'lucide-react'
+import { TransactionTab } from '@/entities/transactions/model/type.ts'
 
 export const TransactionTabs = () => {
-  const {t} = useTranslation()
-  const {setSelectedTab} = useTransactionStore()
-  const tabs = [
-    t('transaction.tabs.all'),
-    t('transaction.tabs.manual'),
-    t('transaction.tabs.bank'),
+  const { t } = useTranslation()
+  const { selectedTab, setSelectedTab } = useTransactionStore()
+
+  const tabItems = [
+    { key: 'all', label: t('transaction.tabs.all') },
+    { key: 'manual', label: t('transaction.tabs.manual') },
+    { key: 'bank', label: t('transaction.tabs.bank') },
   ]
 
-  const handleChangeTab = (tab: string) => {
-    setSelectedTab(tab.toLowerCase())
+  const handleChangeTab = (key: string) => {
+    setSelectedTab(key as TransactionTab)
   }
 
   return (
-    <div className='transactions-tabs'>
-      <Tabs type='card' onChange={event => handleChangeTab(event)} items={tabs.map((tab) => {
-        return {
-          label: tab,
-          key: tab
-        }
-      })} />
+    <div className="transactions-tabs">
+      <Tabs
+        type="card"
+        activeKey={selectedTab}
+        onChange={handleChangeTab}
+        items={tabItems}
+      />
 
-      <Button shape='square' icon={<Plus />} color='primary' />
+      <Button shape="square" icon={<Plus />} color="primary" />
     </div>
   )
 }

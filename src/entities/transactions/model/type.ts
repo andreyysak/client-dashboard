@@ -15,6 +15,8 @@ export interface Transaction {
   category: Category
 }
 
+export type TransactionTab = 'all' | 'manual' | 'bank'
+
 export interface TransactionDto {
   account_id?: number
   category_id?: number

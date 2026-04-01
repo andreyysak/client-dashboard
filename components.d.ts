@@ -43,6 +43,7 @@ declare global{
 	const MaintenanceForm: typeof import('./src/pages/MaintenancePage/ui/MaintenanceForm')['MaintenanceForm']
 	const MaintenanceList: typeof import('./src/pages/MaintenancePage/ui/MaintenanceList')['MaintenanceList']
 	const MaintenanceListItem: typeof import('./src/pages/MaintenancePage/ui/MaintenanceListItem')['MaintenanceListItem']
+	const TransactionTable: typeof import('./src/pages/TransactionPage/ui/TransactionTable')['TransactionTable']
 	const TransactionTabs: typeof import('./src/pages/TransactionPage/ui/TransactionTabs')['TransactionTabs']
 	const TripForm: typeof import('./src/pages/TripsPage/ui/TripForm')['TripForm']
 }
