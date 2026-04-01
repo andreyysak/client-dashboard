@@ -157,5 +157,24 @@
     "form_error_odometer_min": "Odometer must be at least 1",
     "form_error_description_min": "Description must be at least 3 characters",
     "form_error_no_car": "No car selected"
+  },
+  "transaction": {
+    "tabs": {
+      "all": "All",
+      "manual": "Manual",
+      "bank": "Bank"
+    },
+    "columns": {
+      "id": "ID",
+      "category": "Category",
+      "amount": "Amount",
+      "description": "Description",
+      "type": "Type",
+      "date": "Date"
+    },
+    "types": {
+      "income": "Income",
+      "expense": "Expense"
+    }
   }
 }

@@ -157,5 +157,24 @@
     "form_error_odometer_min": "Значення одометра має бути більше за 1",
     "form_error_description_min": "Опис має містити щонайменше 3 символи",
     "form_error_no_car": "Автомобіль не обрано"
+  },
+  "transaction": {
+    "tabs": {
+      "all": "Всі",
+      "manual": "Вручну",
+      "bank": "З банку"
+    },
+    "columns": {
+      "id": "ID",
+      "category": "Категорія",
+      "amount": "Сума",
+      "description": "Опис",
+      "type": "Тип",
+      "date": "Дата"
+    },
+    "types": {
+      "income": "Дохід",
+      "expense": "Витрата"
+    }
   }
 }
